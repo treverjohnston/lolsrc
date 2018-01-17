@@ -63,13 +63,341 @@
                         </div>
                     </div>
                 </div>
+                <div v-if="you && you.topStats" class="row justify-center mobile-only">
+                    <div class="col-xs-3">
+                        <q-btn @click="$refs.topModal.open()" outline>See Top Stats?</q-btn>
+                    </div>
+                </div>
+                <div v-if="you && you.topStats" class="row justify-around desktop-only">
+                    <div class="col-xs-12 text-center">
+                        <h5 class="text-center">Top Stats Last 20 Matches</h5>
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Magic Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Magic Damage Dealt
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.magic.magicDamageDealt}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Magic Damage Dealt To Champions
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.magic.magicDamageDealtToChampions}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Magic Damage Taken
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.magic.magicalDamageTaken}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Physical Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Physical Damage Dealt
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.physical.physicalDamageDealt}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Physical Damage Dealt To Champions
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.physical.physicalDamageDealtToChampions}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Physical Damage Taken
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.physical.physicalDamageTaken}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                True Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                True Damage Dealt
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.true.trueDamageDealt}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+
+
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                True Damage Dealt To Champions
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.true.trueDamageDealtToChampions}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                True Damage Taken
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.true.trueDamageTaken}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Damage Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Total Damage Taken
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.damage.totalDamageTaken}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Damage Dealt To Objectives
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.damage.damageDealtToObjectives}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Damage Self Mitigated
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.damage.damageSelfMitigated}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Damage Dealt To Turrets
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.damage.damageDealtToTurrets}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Heal Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Total Heal
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.heal.totalHeal}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Total Units Healed
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.heal.totalUnitsHealed}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+
+                    <div class="col-xs-12 text-center">
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Vision Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Vision Score
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.vision.visionScore}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Wards Placed
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.vision.wardsPlaced}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Wards Killed
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.vision.wardsKilled}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <hr class="bhr">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Various Stats
+                            </q-item-tile>
+                        </q-item-main>
+                        <hr class="bhr">
+                    </div>
+
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Gold Spent
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.goldSpent}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Largest Critical Strike
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.largestCriticalStrike}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Largest Multi-Kill
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.largestMultiKill}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+
+
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Total Crowd Control Dealt
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.totalTimeCrowdControlDealt}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Total Minions Killed
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.totalMinionsKilled}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Turret Kills
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.turretKills}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                    <div class="col-xs-5">
+                        <q-item-main class="name">
+                            <q-item-tile label>
+                                Inhibitor Kills
+                            </q-item-tile>
+                            <q-item-tile sublabel>
+                                {{you.topStats.various.inhibitorKills}}
+                            </q-item-tile>
+                        </q-item-main>
+                    </div>
+                </div>
             </div>
             <div v-if="you.matches" class="col-xs-12 col-md-8">
                 <div class="row justify-center">
                     <div v-if="you.wins != 0 || you.losses != 0" class="self-center text-center col-xs-12 col-md-8">
                         <h5>Last {{Object.keys(you.matches).length}} Matches</h5>
                         <h6>{{you.wins}}-{{you.losses}}</h6>
-                        <h6>K/D: {{(you.kills/you.deaths).toFixed(2)}}</h6>
+                        <h6>KDA: {{((you.kills+you.assists)/you.deaths).toFixed(2)}}</h6>
                     </div>
                 </div>
                 <div v-if="you.matches" class="row reverse reverse-wrap justify-center">
@@ -104,6 +432,337 @@
                 </div>
             </div>
         </div>
+        <q-modal v-if="you && you.topStats" ref="topModal" minimized>
+                <div class="row justify-around mobile-only">
+                        <div class="col-xs-12 text-center">
+                            <h5 class="text-center">Top Stats Last 20 Matches</h5>
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Magic Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Magic Damage Dealt
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.magic.magicDamageDealt}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Magic Damage Dealt To Champions
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.magic.magicDamageDealtToChampions}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Magic Damage Taken
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.magic.magicalDamageTaken}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Physical Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Physical Damage Dealt
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.physical.physicalDamageDealt}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Physical Damage Dealt To Champions
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.physical.physicalDamageDealtToChampions}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Physical Damage Taken
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.physical.physicalDamageTaken}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    True Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    True Damage Dealt
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.true.trueDamageDealt}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+    
+    
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    True Damage Dealt To Champions
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.true.trueDamageDealtToChampions}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    True Damage Taken
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.true.trueDamageTaken}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Damage Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Total Damage Taken
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.damage.totalDamageTaken}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Damage Dealt To Objectives
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.damage.damageDealtToObjectives}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Damage Self Mitigated
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.damage.damageSelfMitigated}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Damage Dealt To Turrets
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.damage.damageDealtToTurrets}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Heal Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Total Heal
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.heal.totalHeal}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Total Units Healed
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.heal.totalUnitsHealed}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+    
+                        <div class="col-xs-12 text-center">
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Vision Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+    
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Vision Score
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.vision.visionScore}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Wards Placed
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.vision.wardsPlaced}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Wards Killed
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.vision.wardsKilled}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <hr class="bhr">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Various Stats
+                                </q-item-tile>
+                            </q-item-main>
+                            <hr class="bhr">
+                        </div>
+    
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Gold Spent
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.goldSpent}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Largest Critical Strike
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.largestCriticalStrike}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Largest Multi-Kill
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.largestMultiKill}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+    
+    
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Total Crowd Control Dealt
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.totalTimeCrowdControlDealt}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Total Minions Killed
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.totalMinionsKilled}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Turret Kills
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.turretKills}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-item-main class="name">
+                                <q-item-tile label>
+                                    Inhibitor Kills
+                                </q-item-tile>
+                                <q-item-tile sublabel>
+                                    {{you.topStats.various.inhibitorKills}}
+                                </q-item-tile>
+                            </q-item-main>
+                        </div>
+                    </div>
+                </div>
+            <div class="row justify-around">
+                <div class="col-xs-5">
+                    <q-btn push no-caps outline @click="$refs.topModal.close()">Done</q-btn>
+                </div>
+            </div>
+        </q-modal>
         <q-modal v-if="currentMatch && currentMatch.basic && currentMatch.basic.stats && currentMatch.basic.stats.stats" ref="minimizedModal"
             minimized>
             <div class="row justify-center">
@@ -187,8 +846,8 @@
                     </q-item-main>
                     <hr class="bhr">
                 </div>
-                <div  class="col-xs-5">
-                    <q-item-main  class="name">
+                <div class="col-xs-5">
+                    <q-item-main class="name">
                         <q-item-tile label>
                             Magic Damage Dealt
                         </q-item-tile>

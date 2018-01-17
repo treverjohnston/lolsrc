@@ -48,7 +48,49 @@ var store = new vuex.Store({
                 data.wins = 0
                 data.losses = 0
                 data.kills = 0
+                data.assists = 0
                 data.deaths = 0
+                data.topStats = {
+                    magic: {
+                        magicDamageDealt: 0,
+                        magicDamageDealtToChampions: 0,
+                        magicalDamageTaken: 0
+                    },
+                    physical: {
+                        physicalDamageDealt: 0,
+                        physicalDamageDealtToChampions: 0,
+                        physicalDamageTaken: 0
+                    },
+                    true: {
+                        trueDamageDealt: 0,
+                        trueDamageDealtToChampions: 0,
+                        trueDamageTaken: 0
+                    },
+                    damage: {
+                        totalDamageTaken: 0,
+                        damageDealtToObjectives: 0,
+                        damageSelfMitigated: 0,
+                        damageDealtToTurrets: 0
+                    },
+                    heal: {
+                        totalHeal: 0,
+                        totalUnitsHealed: 0
+                    },
+                    vision: {
+                        visionScore: 0,
+                        wardsPlaced: 0,
+                        wardsKilled: 0
+                    },
+                    various: {
+                        goldSpent: 0,
+                        largestCriticalStrike: 0,
+                        largestMultiKill: 0,
+                        totalTimeCrowdControlDealt: 0,
+                        totalMinionsKilled: 0,
+                        turretKills: 0,
+                        inhibitorKills: 0
+                    }
+                }
                 Vue.set(state.summoner, data.id, data)
             }
         },
@@ -143,12 +185,35 @@ var store = new vuex.Store({
                                 state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].losses += 1
                             }
                             state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].kills += data.basic.stats.stats.kills
+                            state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].assists += data.basic.stats.stats.assists
                             state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].deaths += data.basic.stats.stats.deaths
                             Vue.set(state.summoner, [data.participantIdentities[element.participantId - 1].player.summonerId].matches, data)
+
+                            var top = state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].topStats
+                            for (const i in top) {
+                                if (top.hasOwnProperty(i)) {
+                                    const place = top[i];
+                                    for (const stat in place) {
+                                        if (place.hasOwnProperty(stat)) {
+                                            // console.log('place', place)
+                                            if (data.basic.stats.stats[stat]) {
+                                                // console.log('place@stat', place[stat])
+                                                if (data.basic.stats.stats[stat] > place[stat]) {
+                                                    place[stat] = data.basic.stats.stats[stat]
+                                                    // console.log('stat', place[stat])
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
                         }
                     }
                 }
+                // console.log('top done', state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].topStats)
             }
+
             state.currentGame = data
             Vue.set(state.you.matches, data.gameId, data)
         },
