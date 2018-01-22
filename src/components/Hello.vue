@@ -2,8 +2,16 @@
   <q-layout class="main" ref="layout">
     <div class="input row justify-center">
       <div class="input col-xs-8 col-md-4 text-center">
-        <q-input class="text-center" v-model="summoner" />
-        <q-btn outline @click="findSummoner">Find Summoner</q-btn>
+        <q-input dark placeholder="Find Summoner" color="white"  class="text-center" v-model="summoner" :after="[
+        {
+          icon: 'arrow_forward',
+          content: true,
+          handler () {
+            findSummoner()
+          }
+        }
+      ]"/>
+        <!-- <q-btn outline @click="findSummoner">Find Summoner</q-btn> -->
       </div>
     </div>
     <router-view />
@@ -140,6 +148,9 @@
 </script>
 
 <style>
+  .white{
+    color: white;
+  }
   test {
     margin-top: 2rem;
   }

@@ -3,8 +3,9 @@ import axios from 'axios'
 import vuex from 'vuex'
 import router from '../router'
 
-var production = !window.location.host.includes('localhost');
-var baseUrl = production ? '//lol-tracker.herokuapp.com/' : '//localhost:5000/';
+// var production = !window.location.host.includes('localhost');
+var production = true;
+var baseUrl = production ? 'https://lol-tracker.herokuapp.com/' : '//localhost:5000/';
 
 let api = axios.create({
     baseURL: baseUrl + 'api/',
@@ -237,6 +238,7 @@ var store = new vuex.Store({
     },
     actions: {
         getSummoner({ commit, dispatch }, obj) {
+            commit('clearData')
             api(`summoners/${obj.name}`)
                 .then(res => {
                     if (res.data.status) {
