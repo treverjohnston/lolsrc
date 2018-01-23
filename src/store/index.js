@@ -3,8 +3,8 @@ import axios from 'axios'
 import vuex from 'vuex'
 import router from '../router'
 
-// var production = !window.location.host.includes('localhost');
-var production = true;
+var production = !window.location.host.includes('localhost');
+// var production = true;
 var baseUrl = production ? 'https://lol-tracker.herokuapp.com/' : '//localhost:5000/';
 
 let api = axios.create({

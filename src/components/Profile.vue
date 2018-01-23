@@ -1313,9 +1313,9 @@
                 summoner: '',
                 time: '',
                 show: false,
-                url: "https://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/",
+                url: "https://ddragon.leagueoflegends.com/cdn/8.1.1/img/champion/",
                 test: false,
-                iconUrl: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/profileicon/",
+                iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.1.1/img/profileicon/",
                 scoreUrl: "http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/",
                 showTop: false
             }
