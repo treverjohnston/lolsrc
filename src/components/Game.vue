@@ -38,7 +38,7 @@
                         </q-transition>
                     </div>
                     <div class="col-xs-12 text-center">
-                        <q-btn class="btn" outline @click="viewSummonerDesk(current)">See Recent Matches</q-btn>
+                        <q-btn outline no-caps color="white" @click="viewSummonerDesk(current)">See Recent Matches</q-btn>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     <div v-if="playing && sum.teamId == 100" v-for="sum in summoners" class="col-xs-12 col-md-2">
                         <q-transition appear enter="fadeIn">
                             <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="blue shadow-24 pic">
-                                <q-btn class="full-width" no-caps>
+                                <q-btn  class="full-width" no-caps>
                                     <q-card-media overlay-position="full">
                                         <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
                                     </q-card-media>
@@ -116,7 +116,7 @@
                     <div v-if="playing && sum.teamId == 200" v-for="sum in summoners" class="col-xs-12 col-md-2">
                         <q-transition appear enter="fadeIn">
                             <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="red shadow-24 pic">
-                                <q-btn no-caps>
+                                <q-btn  no-caps>
                                     <q-card-media overlay-position="full">
                                         <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
                                     </q-card-media>
@@ -169,9 +169,12 @@
                 </div>
             </div>
             <div class="row justify-around space">
-                <div class="col-xs-12">
-                    <q-btn push no-caps class="done" @click="close">Done</q-btn>
-                    <q-btn push no-caps class="done" @click="viewSummoner(current)">See Recent Matches</q-btn>
+                <div class="col-xs-5">
+                    <q-btn outline no-caps class="done" @click="close">Done</q-btn>
+                </div>
+                <div class="col-xs-5">
+
+                    <q-btn outline no-caps class="done" @click="viewSummoner(current)">See Recent Matches</q-btn>
                 </div>
             </div>
         </q-modal>
@@ -183,7 +186,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <q-btn push no-caps class="done" @click="closeProf">Done</q-btn>
+                    <q-btn outline no-caps class="done" @click="closeProf">Done</q-btn>
                 </div>
             </div>
         </q-modal>
@@ -201,7 +204,7 @@
                     </q-item-main>
                 </div>
                 <div class="col-xs-2 self-center">
-                    <q-btn no-caps class="done" @click="tips = !tips">Toggle</q-btn>
+                    <q-btn no-caps outline @click="tips = !tips">Toggle</q-btn>
                 </div>
                 <hr class="bhr">
                 <div v-if="tips" class="col-xs-12 col-md-12">

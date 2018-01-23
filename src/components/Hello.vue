@@ -11,7 +11,6 @@
           }
         }
       ]"/>
-        <!-- <q-btn outline @click="findSummoner">Find Summoner</q-btn> -->
       </div>
     </div>
     <router-view />
@@ -137,9 +136,7 @@
     },
     mounted() {
       this.$store.dispatch('getAllChampionsStatic')
-      if (this.$route.path == '/riot.txt') {
 
-      }
     },
     beforeDestroy() {
 
