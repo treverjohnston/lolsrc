@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.tracker.lol" version="1.0.0">
+<widget id="com.tracker.lol" version="1.0.1">
     <name>LoL-Tracker</name>
     <description>
-        A simple app to see who you are in game with.
+        A simple League of Legends app to see what summoners you are in game with.
     </description>
     <author email="treverj1029@gmail.com" href="http://treverjohnston.com">
        Trever Johnston

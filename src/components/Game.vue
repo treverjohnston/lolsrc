@@ -235,7 +235,7 @@
                 </div>
                 <div class="col-xs-5">
                     <q-btn outline @click="launch(buildUrl +`${allChampions[current.championId].name}`)" no-caps>
-                        View Pro Builds
+                        View Champion Builds
                     </q-btn>
                 </div>
             </div>
@@ -310,7 +310,7 @@
                 url: "https://ddragon.leagueoflegends.com/cdn/8.1.1/img/champion/",
                 test: false,
                 iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.1.1/img/profileicon/",
-                buildUrl: "http://www.probuilds.net/champions/details/",
+                buildUrl: "http://www.lolking.net/builds/champion/",
                 tips: true
             }
         },
