@@ -4,7 +4,7 @@
             <div class="sm-gutter col-xs-12 col-sm-3 desktop-only" v-show="current.masteries && current.teamId">
                 <div class="row justify-center">
                     <div v-if="current.championId" class="col-xs-12 white text-center link">
-                        <q-btn outline @click="openChamps(current.championId)" no-caps>
+                        <q-btn outline @click="openChamps(allChampions[current.championId].name)" no-caps>
                             <h5>
                                 {{allChampions[current.championId].name}}
                             </h5>
@@ -136,7 +136,7 @@
         <q-modal class="mobile-only" ref="mini" minimized @close="close">
             <div class="row justify-center">
                 <div v-if="current.championId" class="col-xs-12 text-center">
-                    <q-btn @click="openChamps(current.championId)" class="link" outline no-caps>
+                    <q-btn @click="openChamps(allChampions[current.championId].name)" class="link" outline no-caps>
                         <h4>{{allChampions[current.championId].name}}</h4>
                     </q-btn>
                 </div>

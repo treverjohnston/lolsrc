@@ -12,6 +12,11 @@ let api = axios.create({
     timeout: 4000,
     withCredentials: true
 })
+let dragon = axios.create({
+    baseURL: 'http://ddragon.leagueoflegends.com/cdn/8.1.1/data/en_US/champion',
+    timeout: 4000,
+    // withCredentials: true
+})
 
 Vue.use(vuex)
 
@@ -141,9 +146,15 @@ var store = new vuex.Store({
             }
         },
         setAdvanced(state, data) {
-            state.allChampions[data.id].advanced = {}
-            Vue.set(state.allChampions, [data.id].advanced, data)
-            state.allChampions[data.id].advanced = data
+            console.log(data)
+            var obj = {
+                allytips: data.allytips,
+                enemytips: data.enemytips,
+                id: data.key
+            }
+            state.allChampions[data.key].advanced = {}
+            Vue.set(state.allChampions, [data.key].advanced, obj)
+            state.allChampions[data.key].advanced = obj
         },
         setTop(state, data) {
             for (let i = 0; i < 3; i++) {
@@ -311,18 +322,34 @@ var store = new vuex.Store({
                     commit('handleError', err)
                 })
         },
-        getChampionsInfo({ commit, dispatch }, id) {
-            api(`champions/${id}`)
-                .then(res => {
-                    if (res.data.status) {
-                        console.error(res.data.status.message)
-
-                    }
-                    commit('setAdvanced', res.data)
-                })
-                .catch(err => {
-                    commit('handleError', err)
-                })
+        getChampionsInfo({ commit, dispatch }, champ) {
+            dragon(`/${champ}.json`)
+            .then(res => {
+                console.log(res.data)
+                // if (res.data.status.status_code == 429) {
+                //     return swal({
+                //         title: 'Rate Limit Exceeded, Try Again Later',
+                //         timer: 4000
+                //     })
+                // }
+                commit('setAdvanced', res.data.data[champ])
+            })
+            .catch(err => {
+                commit('handleError', err)
+            })
+            // api(`champions/${id}`)
+            //     .then(res => {
+            //         if (res.data.status.status_code == 429) {
+            //             return swal({
+            //                 title: 'Rate Limit Exceeded, Try Again Later',
+            //                 timer: 4000
+            //             })
+            //         }
+            //         commit('setAdvanced', res.data)
+            //     })
+            //     .catch(err => {
+            //         commit('handleError', err)
+            //     })
         },
         getAllChampions({ commit, dispatch }) {
             api(`champions`)
