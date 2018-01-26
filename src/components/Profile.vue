@@ -1390,8 +1390,18 @@
                             labels: this.getDamage(),
                             datasets: [
                                 {
+                                    label: 'Lowest Damage',
+                                    backgroundColor: 'rgba(100, 0, 0, .9)',
+                                    data: this.getLDStats()
+                                },
+                                {
+                                    label: 'Average Damage',
+                                    backgroundColor: 'rgba(100, 0, 100, 0.815)',
+                                    data: this.getADStats()
+                                },
+                                {
                                     label: 'Current Matches Damage',
-                                    backgroundColor: 'rgba(0, 0, 0, 0.815)',
+                                    backgroundColor: 'rgba(0, 0, 100, 0.815)',
                                     data: this.getCDStats()
                                 },
                                 {
@@ -1409,9 +1419,24 @@
                             labels: this.getHeal(),
                             datasets: [
                                 {
-                                    label: 'Heal',
+                                    label: 'Top Heal',
                                     backgroundColor: 'red',
                                     data: this.getHealStats()
+                                },
+                                {
+                                    label: 'Current Match Heal',
+                                    backgroundColor: 'green',
+                                    data: this.getCHealStats()
+                                },
+                                {
+                                    label: 'Lowest Heal',
+                                    backgroundColor: 'red',
+                                    data: this.getLHealStats()
+                                },
+                                {
+                                    label: 'Average Heal',
+                                    backgroundColor: 'blue',
+                                    data: this.getAvgHealStats()
                                 }
                             ]
                         }
@@ -1421,11 +1446,26 @@
                         this.datacollection = {
                             labels: this.getMag(),
                             datasets: [
-                                {
-                                    label: 'Magic',
-                                    backgroundColor: '#f87979',
-                                    data: this.getMagStats()
-                                }
+                            {
+                                label: 'Top Magic',
+                                backgroundColor: 'red',
+                                data: this.getMagStats()
+                            },
+                            {
+                                label: 'Current Match Magic',
+                                backgroundColor: 'green',
+                                data: this.getCMagStats()
+                            },
+                            {
+                                label: 'Lowest Magic',
+                                backgroundColor: 'red',
+                                data: this.getLMagStats()
+                            },
+                            {
+                                label: 'Average Magic',
+                                backgroundColor: 'blue',
+                                data: this.getAvgMagStats()
+                            }
                             ]
                         }
                         this.which += 1
@@ -1434,11 +1474,26 @@
                         this.datacollection = {
                             labels: this.getPhys(),
                             datasets: [
-                                {
-                                    label: 'Physical',
-                                    backgroundColor: '#f87979',
-                                    data: this.getPhysStats()
-                                }
+                            {
+                                label: 'Top Physical',
+                                backgroundColor: 'red',
+                                data: this.getPhysStats()
+                            },
+                            {
+                                label: 'Current Match Physical',
+                                backgroundColor: 'green',
+                                data: this.getCPhysStats()
+                            },
+                            {
+                                label: 'Lowest Physical',
+                                backgroundColor: 'red',
+                                data: this.getLPhysStats()
+                            },
+                            {
+                                label: 'Average Physical',
+                                backgroundColor: 'blue',
+                                data: this.getAvgPhysStats()
+                            }
                             ]
                         }
                         this.which += 1
@@ -1447,11 +1502,26 @@
                         this.datacollection = {
                             labels: this.getTrue(),
                             datasets: [
-                                {
-                                    label: 'True',
-                                    backgroundColor: '#f87979',
-                                    data: this.getTrueStats()
-                                }
+                            {
+                                label: 'Top True',
+                                backgroundColor: 'red',
+                                data: this.getTrueStats()
+                            },
+                            {
+                                label: 'Current Match True',
+                                backgroundColor: 'green',
+                                data: this.getCTrueStats()
+                            },
+                            {
+                                label: 'Lowest True',
+                                backgroundColor: 'red',
+                                data: this.getLTrueStats()
+                            },
+                            {
+                                label: 'Average True',
+                                backgroundColor: 'blue',
+                                data: this.getAvgTrueStats()
+                            }
                             ]
                         }
                         this.which += 1
@@ -1460,11 +1530,26 @@
                         this.datacollection = {
                             labels: this.getVar(),
                             datasets: [
-                                {
-                                    label: 'Various',
-                                    backgroundColor: '#f87979',
-                                    data: this.getVarStats()
-                                }
+                            {
+                                label: 'Top Various',
+                                backgroundColor: 'red',
+                                data: this.getVarStats()
+                            },
+                            {
+                                label: 'Current Match Various',
+                                backgroundColor: 'green',
+                                data: this.getCVarStats()
+                            },
+                            {
+                                label: 'Lowest Various',
+                                backgroundColor: 'red',
+                                data: this.getLVarStats()
+                            },
+                            {
+                                label: 'Average Various',
+                                backgroundColor: 'blue',
+                                data: this.getAvgVarStats()
+                            }
                             ]
                         }
                         this.which += 1
@@ -1473,11 +1558,26 @@
                         this.datacollection = {
                             labels: this.getVision(),
                             datasets: [
-                                {
-                                    label: 'Vision',
-                                    backgroundColor: '#f87979',
-                                    data: this.getVisionStats()
-                                }
+                            {
+                                label: 'Top Vision',
+                                backgroundColor: 'red',
+                                data: this.getVisionStats()
+                            },
+                            {
+                                label: 'Current Match Vision',
+                                backgroundColor: 'green',
+                                data: this.getCVisionStats()
+                            },
+                            {
+                                label: 'Lowest Vision',
+                                backgroundColor: 'red',
+                                data: this.getVisionStats()
+                            },
+                            {
+                                label: 'Average Vision',
+                                backgroundColor: 'blue',
+                                data: this.getAvgVisionStats()
+                            }
                             ]
                         }
                         this.which = 1
@@ -1494,15 +1594,6 @@
                     }
                 }
                 final.push(title)
-                // title = []
-                // for (const stat in this.currentMatch.basic.charts.damage) {
-                //     if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
-                //         const el = this.currentMatch.basic.charts.damage[stat];
-                //         title.push(el.title)
-                //     }
-                // }
-                // final.push(title)
-                // console.log('fin', final)
                 return title
             },
             getCurrentDamage() {
@@ -1591,16 +1682,6 @@
                         stats.push(el.num)
                     }
                 }
-                // final.push(stats)
-                // stats = []
-                // for (const stat in this.currentMatch.basic.charts.damage) {
-                //     if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
-                //         const el = this.currentMatch.basic.charts.damage[stat];
-                //         stats.push(el.num)
-                //     }
-                // }
-                // final.push(stats)
-
                 return stats
             },
             getCDStats() {
@@ -1613,12 +1694,62 @@
                 }
                 return stats
             },
+            getLDStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.damage) {
+                    if (this.you.lowStats.damage.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.damage[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getADStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.damage) {
+                    if (this.you.avgStats.damage.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.damage[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
+                    }
+                }
+                return stats
+            },
             getHealStats() {
                 var stats = []
                 for (const stat in this.you.topStats.heal) {
                     if (this.you.topStats.heal.hasOwnProperty(stat)) {
                         const el = this.you.topStats.heal[stat];
                         stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getCHealStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.heal) {
+                    if (this.currentMatch.basic.charts.heal.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.heal[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getLHealStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.heal) {
+                    if (this.you.lowStats.heal.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.heal[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getAvgHealStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.heal) {
+                    if (this.you.avgStats.heal.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.heal[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
@@ -1634,6 +1765,36 @@
 
                 return stats
             },
+            getCMagStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.magic) {
+                    if (this.currentMatch.basic.charts.magic.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.magic[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getLMagStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.magic) {
+                    if (this.you.lowStats.magic.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.magic[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getAvgMagStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.magic) {
+                    if (this.you.avgStats.magic.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.magic[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
+                    }
+                }
+                return stats
+            },
             getPhysStats() {
                 var stats = []
                 for (const stat in this.you.topStats.physical) {
@@ -1643,6 +1804,36 @@
                     }
                 }
 
+                return stats
+            },
+            getCPhysStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.physical) {
+                    if (this.currentMatch.basic.charts.physical.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.physical[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getLPhysStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.physical) {
+                    if (this.you.lowStats.physical.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.physical[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getAvgPhysStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.physical) {
+                    if (this.you.avgStats.physical.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.physical[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
+                    }
+                }
                 return stats
             },
             getTrueStats() {
@@ -1656,6 +1847,36 @@
 
                 return stats
             },
+            getCTrueStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.true) {
+                    if (this.currentMatch.basic.charts.true.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.true[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getLTrueStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.true) {
+                    if (this.you.lowStats.true.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.true[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getAvgTrueStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.true) {
+                    if (this.you.avgStats.true.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.true[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
+                    }
+                }
+                return stats
+            },
             getVarStats() {
                 var stats = []
                 for (const stat in this.you.topStats.various) {
@@ -1667,6 +1888,36 @@
 
                 return stats
             },
+            getCVarStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.various) {
+                    if (this.currentMatch.basic.charts.various.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.various[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getLVarStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.various) {
+                    if (this.you.lowStats.various.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.various[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getAvgVarStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.various) {
+                    if (this.you.avgStats.various.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.various[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
+                    }
+                }
+                return stats
+            },
             getVisionStats() {
                 var stats = []
                 for (const stat in this.you.topStats.vision) {
@@ -1676,6 +1927,36 @@
                     }
                 }
 
+                return stats
+            },
+            getCVisionStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.vision) {
+                    if (this.currentMatch.basic.charts.vision.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.vision[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getLVisionStats() {
+                var stats = []
+                for (const stat in this.you.lowStats.vision) {
+                    if (this.you.lowStats.vision.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats.vision[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getAvgVisionStats() {
+                var stats = []
+                for (const stat in this.you.avgStats.vision) {
+                    if (this.you.avgStats.vision.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats.vision[stat];
+                        stats.push(el.num/Object.keys(this.you.matches).length)
+                    }
+                }
                 return stats
             },
             keepTrying() {
