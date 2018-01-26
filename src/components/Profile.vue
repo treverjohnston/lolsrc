@@ -1387,17 +1387,17 @@
                 switch (this.which) {
                     case 1:
                         this.datacollection = {
-                            labels: [this.getDamage(), this.getCurrentDamage()],
+                            labels: this.getDamage(),
                             datasets: [
                                 {
-                                    label: 'Top Damage',
-                                    backgroundColor: 'blue',
-                                    data: this.getDStats()
+                                    label: 'Current Matches Damage',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.815)',
+                                    data: this.getCDStats()
                                 },
                                 {
-                                    label: 'Match Damage',
-                                    backgroundColor: 'red',
-                                    data: this.getCDStats()
+                                    label: 'Top Damage',
+                                    backgroundColor: 'rgba(0, 100, 0, 0.815)',
+                                    data: this.getDStats()
                                 }
                             ]
                         }
@@ -1475,8 +1475,8 @@
                             datasets: [
                                 {
                                     label: 'Vision',
-                                                backgroundColor: '#f87979',
-                                                data: this.getVisionStats()
+                                    backgroundColor: '#f87979',
+                                    data: this.getVisionStats()
                                 }
                             ]
                         }
@@ -1485,6 +1485,7 @@
                 }
             },
             getDamage() {
+                var final = []
                 var title = []
                 for (const stat in this.you.topStats.damage) {
                     if (this.you.topStats.damage.hasOwnProperty(stat)) {
@@ -1492,7 +1493,16 @@
                         title.push(el.title)
                     }
                 }
-
+                final.push(title)
+                // title = []
+                // for (const stat in this.currentMatch.basic.charts.damage) {
+                //     if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
+                //         const el = this.currentMatch.basic.charts.damage[stat];
+                //         title.push(el.title)
+                //     }
+                // }
+                // final.push(title)
+                // console.log('fin', final)
                 return title
             },
             getCurrentDamage() {
@@ -1573,6 +1583,7 @@
                 return title
             },
             getDStats() {
+                var final = []
                 var stats = []
                 for (const stat in this.you.topStats.damage) {
                     if (this.you.topStats.damage.hasOwnProperty(stat)) {
@@ -1580,6 +1591,16 @@
                         stats.push(el.num)
                     }
                 }
+                // final.push(stats)
+                // stats = []
+                // for (const stat in this.currentMatch.basic.charts.damage) {
+                //     if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
+                //         const el = this.currentMatch.basic.charts.damage[stat];
+                //         stats.push(el.num)
+                //     }
+                // }
+                // final.push(stats)
+
                 return stats
             },
             getCDStats() {
