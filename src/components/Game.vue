@@ -4,7 +4,7 @@
             <div class="sm-gutter col-xs-12 col-sm-3 desktop-only" v-show="current.masteries && current.teamId">
                 <div class="row justify-center">
                     <div v-if="current.championId" class="col-xs-12 white text-center link">
-                        <q-btn outline @click="openChamps(allChampions[current.championId].name)" no-caps>
+                        <q-btn outline @click="openChamps(current.championId)" no-caps>
                             <h5>
                                 {{allChampions[current.championId].name}}
                             </h5>
@@ -95,7 +95,7 @@
                     <div v-if="playing && sum.teamId == 100" v-for="sum in summoners" class="col-xs-12 col-md-2">
                         <q-transition appear enter="fadeIn">
                             <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="blue shadow-24 pic">
-                                <q-btn  class="full-width" no-caps>
+                                <q-btn class="full-width" no-caps>
                                     <q-card-media overlay-position="full">
                                         <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
                                     </q-card-media>
@@ -116,7 +116,7 @@
                     <div v-if="playing && sum.teamId == 200" v-for="sum in summoners" class="col-xs-12 col-md-2">
                         <q-transition appear enter="fadeIn">
                             <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="red shadow-24 pic">
-                                <q-btn  no-caps>
+                                <q-btn no-caps>
                                     <q-card-media overlay-position="full">
                                         <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
                                     </q-card-media>
@@ -136,7 +136,7 @@
         <q-modal class="mobile-only" ref="mini" minimized @close="close">
             <div class="row justify-center">
                 <div v-if="current.championId" class="col-xs-12 text-center">
-                    <q-btn @click="openChamps(allChampions[current.championId].name)" class="link" outline no-caps>
+                    <q-btn @click="openChamps(current.championId)" class="link" outline no-caps>
                         <h4>{{allChampions[current.championId].name}}</h4>
                     </q-btn>
                 </div>
@@ -307,9 +307,9 @@
                 summoner: '',
                 time: '',
                 show: false,
-                url: "https://ddragon.leagueoflegends.com/cdn/8.1.1/img/champion/",
+                url: "https://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/",
                 test: false,
-                iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.1.1/img/profileicon/",
+                iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.2.1/img/profileicon/",
                 buildUrl: "http://www.lolking.net/builds/champion/",
                 tips: true
             }
@@ -346,7 +346,12 @@
         methods: {
             openChamps(id) {
                 this.$refs.champs.open()
-                this.$store.dispatch('getChampionsInfo', id)
+                if (!this.allChampions[id].advanced) {
+                    this.$store.dispatch('getChampionsInfo', id)
+                }
+                else {
+                    console.log('already got it')                
+}
             },
             close() {
                 this.$refs.mini.close()

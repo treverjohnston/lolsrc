@@ -15,6 +15,7 @@ import Quasar from 'quasar'
 import router from './router'
 import store from './store'
 import swal from 'sweetalert'
+import VueCharts from 'vue-chartjs'
 
 
 

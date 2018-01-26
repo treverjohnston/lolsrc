@@ -70,9 +70,9 @@
         summoner: '',
         time: '',
         show: false,
-        url: "https://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/",
+        url: "https://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/",
         test: false,
-        iconUrl: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/profileicon/",
+        iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.2.1/img/profileicon/",
         riot: false
       }
     },
@@ -130,13 +130,18 @@
       },
       matchData(id) {
         this.$store.dispatch('getSingleMatches', id)
+      },
+      checkChamp(){
+        if(!this.allChampions){
+          this.$store.dispatch('getAllChampionsStatic')
+        }
       }
 
 
     },
     mounted() {
       this.$store.dispatch('getAllChampionsStatic')
-
+      this.checkChamp()
     },
     beforeDestroy() {
 

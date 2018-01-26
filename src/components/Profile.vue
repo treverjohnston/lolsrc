@@ -2,6 +2,9 @@
     <q-layout class="main" ref="layout">
         <div v-if="!you.id" class="row justify-center">
         </div>
+        <div v-if="you && you.topStats">
+            <chart :chart-data="datacollection"></chart>
+        </div>
         <div v-if="you.matches != 0 && you.id" class="row justify-center white">
             <div class="col-md-3 self-center text-center mobile-hide" v-if="!test">
                 <h2>Top Champs</h2>
@@ -1282,9 +1285,11 @@
     } from 'quasar'
 
 
+    import Chart from './Chart'
     export default {
-        name: 'index',
+        name: 'profile',
         components: {
+            Chart,
             QLayout,
             QToolbar,
             QToolbarTitle,
@@ -1313,11 +1318,13 @@
                 summoner: '',
                 time: '',
                 show: false,
-                url: "https://ddragon.leagueoflegends.com/cdn/8.1.1/img/champion/",
+                url: "https://ddragon.leagueoflegends.com/cdn/8.2.1/img/champion/",
                 test: false,
-                iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.1.1/img/profileicon/",
+                iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.2.1/img/profileicon/",
                 scoreUrl: "http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/",
-                showTop: false
+                showTop: false,
+                datacollection: null
+
             }
         },
         computed: {
@@ -1374,12 +1381,53 @@
             },
             matchData(id) {
                 this.$store.dispatch('getSingleMatches', id)
+            },
+            fillData() {
+                this.datacollection = {
+                    labels: this.getTitles(),
+                    datasets: [
+                        {
+                            label: 'Damage',
+                            backgroundColor: '#f87979',
+                            data: this.getStats()
+                        }
+                    ]
+                }
+            },
+            getTitles() {
+                var title = []
+
+                for (var stat in this.you.topStats.damage) {
+                    title.push(stat)
+                }
+                console.log('title', title)
+                return title
+            },
+            getStats() {
+                var stats = []
+                for (var stat in this.you.topStats.damage) {
+                    stats.push(this.you.topStats.damage[stat])
+                }
+                console.log('stats', stats)
+                return stats
+            },
+            keepTrying() {
+                if (this.you.topStats) {
+                    this.fillData()
+                } else {
+                    setTimeout(this.keepTrying, 3000)
+                }
             }
 
 
         },
         mounted() {
             this.$store.dispatch('getAllChampionsStatic')
+            if (this.you.topStats) {
+                this.fillData()
+            } else {
+                setTimeout(this.keepTrying, 3000)
+            }
         }
     }
 </script>
