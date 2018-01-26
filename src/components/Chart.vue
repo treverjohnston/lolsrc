@@ -12,30 +12,6 @@
         props: ['options'],
         mounted() {
             this.renderChart(this.chartData, this.options)
-            // Overwriting base render method with actual data.
-            // for(stat in you.topStats[damage]){
-            //     this.renderChart({
-            //         labels: Object.keys(stat),
-            //         datasets:[
-            //             {
-            //                 label: 'Damage',
-            //                 backgroundColor: '#f87979',
-            //                 data: stat
-            //             }
-
-            //         ]
-            //     })
-            // }
-            // this.renderChart({
-            //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            //     datasets: [
-            //         {
-            //             label: 'GitHub Commits',
-            //             backgroundColor: '#f87979',
-            //             data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-            //         }
-            //     ]
-            // })
         },
         computed:{
             playing() {

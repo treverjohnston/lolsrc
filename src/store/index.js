@@ -58,43 +58,118 @@ var store = new vuex.Store({
                 data.deaths = 0
                 data.topStats = {
                     magic: {
-                        magicDamageDealt: 0,
-                        magicDamageDealtToChampions: 0,
-                        magicalDamageTaken: 0
+                        magicDamageDealt: {
+                            title: 'Magic Damage Dealt',
+                            num: 0
+                        },
+                        magicDamageDealtToChampions: {
+                            title: 'Magic Damage Dealt To Champions',
+                            num: 0
+                        },
+                        magicalDamageTaken: {
+                            title: 'Magic Damage Taken',
+                            num: 0
+                        }
                     },
                     physical: {
-                        physicalDamageDealt: 0,
-                        physicalDamageDealtToChampions: 0,
-                        physicalDamageTaken: 0
+                        physicalDamageDealt: {
+                            title: 'Physical Damage Dealt',
+                            num: 0
+                        },
+                        physicalDamageDealtToChampions: {
+                            title: 'Physical Damage Dealt To Champions',
+                            num: 0
+                        },
+                        physicalDamageTaken: {
+                            title: 'Physical Damage Taken',
+                            num: 0
+                        }
                     },
                     true: {
-                        trueDamageDealt: 0,
-                        trueDamageDealtToChampions: 0,
-                        trueDamageTaken: 0
+                        trueDamageDealt: {
+                            title: 'True Damage Dealt',
+                            num: 0
+                        },
+                        trueDamageDealtToChampions: {
+                            title: 'True Damage Dealt To Champions',
+                            num: 0
+                        },
+                        trueDamageTaken: {
+                            title: 'True Damage Taken',
+                            num: 0
+                        }
                     },
                     damage: {
-                        totalDamageTaken: 0,
-                        damageDealtToObjectives: 0,
-                        damageSelfMitigated: 0,
-                        damageDealtToTurrets: 0
+                        totalDamageTaken: {
+                            title: 'Total Damage Taken',
+                            num: 0
+                        },
+                        damageDealtToObjectives: {
+                            title: 'Total Damage Dealt To Objectives',
+                            num: 0
+                        },
+                        damageSelfMitigated: {
+                            title: 'Damage Self Mitigated',
+                            num: 0
+                        },
+                        damageDealtToTurrets: {
+                            title: 'Damage Dealt To Turrets',
+                            num: 0
+                        }
                     },
                     heal: {
-                        totalHeal: 0,
-                        totalUnitsHealed: 0
+                        totalHeal: {
+                            title: 'Total Heal',
+                            num: 0
+                        },
+                        totalUnitsHealed: {
+                            title: 'Total Units Healed',
+                            num: 0
+                        }
                     },
                     vision: {
-                        visionScore: 0,
-                        wardsPlaced: 0,
-                        wardsKilled: 0
+                        visionScore: {
+                            title: 'Vision Score',
+                            num: 0
+                        },
+                        wardsPlaced: {
+                            title: 'Wards Placed',
+                            num: 0
+                        },
+                        wardsKilled: {
+                            title: 'Wards Killed',
+                            num: 0
+                        }
                     },
                     various: {
-                        goldSpent: 0,
-                        largestCriticalStrike: 0,
-                        largestMultiKill: 0,
-                        totalTimeCrowdControlDealt: 0,
-                        totalMinionsKilled: 0,
-                        turretKills: 0,
-                        inhibitorKills: 0
+                        goldSpent: {
+                            title: 'Gold Spent',
+                            num: 0
+                        },
+                        largestCriticalStrike: {
+                            title: 'Largest Critical Strike',
+                            num: 0
+                        },
+                        largestMultiKill: {
+                            title: 'Largest Multi-Kill',
+                            num: 0
+                        },
+                        totalTimeCrowdControlDealt: {
+                            title: 'Total Time Crowd Control Dealt',
+                            num: 0
+                        },
+                        totalMinionsKilled: {
+                            title: 'Total Minions Killed',
+                            num: 0
+                        },
+                        turretKills: {
+                            title: 'Turrets Killed',
+                            num: 0
+                        },
+                        inhibitorKills: {
+                            title: 'Inhibitors Killed',
+                            num: 0
+                        }
                     }
                 }
                 Vue.set(state.summoner, data.id, data)
@@ -185,7 +260,9 @@ var store = new vuex.Store({
                     let element = data.participantIdentities[i];
                     if (element.player.currentAccountId == state.you.accountId) {
                         if (!state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].matches[data.gameId]) {
+                            // At right summoner and match
                             data.basic.stats = data.participants[element.participantId - 1]
+                            // console.log('place', data.basic.stats)
                             if (data.basic.stats.stats.win) {
                                 state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].wins += 1
                             } else {
@@ -196,18 +273,152 @@ var store = new vuex.Store({
                             state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].deaths += data.basic.stats.stats.deaths
                             Vue.set(state.summoner, [data.participantIdentities[element.participantId - 1].player.summonerId].matches, data)
 
+                            data.basic.charts = {
+                                magic: {
+                                    magicDamageDealt: {
+                                        title: 'Magic Damage Dealt',
+                                        num: 0
+                                    },
+                                    magicDamageDealtToChampions: {
+                                        title: 'Magic Damage Dealt To Champions',
+                                        num: 0
+                                    },
+                                    magicalDamageTaken: {
+                                        title: 'Magic Damage Taken',
+                                        num: 0
+                                    }
+                                },
+                                physical: {
+                                    physicalDamageDealt: {
+                                        title: 'Physical Damage Dealt',
+                                        num: 0
+                                    },
+                                    physicalDamageDealtToChampions: {
+                                        title: 'Physical Damage Dealt To Champions',
+                                        num: 0
+                                    },
+                                    physicalDamageTaken: {
+                                        title: 'Physical Damage Taken',
+                                        num: 0
+                                    }
+                                },
+                                true: {
+                                    trueDamageDealt: {
+                                        title: 'True Damage Dealt',
+                                        num: 0
+                                    },
+                                    trueDamageDealtToChampions: {
+                                        title: 'True Damage Dealt To Champions',
+                                        num: 0
+                                    },
+                                    trueDamageTaken: {
+                                        title: 'True Damage Taken',
+                                        num: 0
+                                    }
+                                },
+                                damage: {
+                                    totalDamageTaken: {
+                                        title: 'Total Damage Taken',
+                                        num: 0
+                                    },
+                                    damageDealtToObjectives: {
+                                        title: 'Total Damage Dealt To Objectives',
+                                        num: 0
+                                    },
+                                    damageSelfMitigated: {
+                                        title: 'Damage Self Mitigated',
+                                        num: 0
+                                    },
+                                    damageDealtToTurrets: {
+                                        title: 'Damage Dealt To Turrets',
+                                        num: 0
+                                    }
+                                },
+                                heal: {
+                                    totalHeal: {
+                                        title: 'Total Heal',
+                                        num: 0
+                                    },
+                                    totalUnitsHealed: {
+                                        title: 'Total Units Healed',
+                                        num: 0
+                                    }
+                                },
+                                vision: {
+                                    visionScore: {
+                                        title: 'Vision Score',
+                                        num: 0
+                                    },
+                                    wardsPlaced: {
+                                        title: 'Wards Placed',
+                                        num: 0
+                                    },
+                                    wardsKilled: {
+                                        title: 'Wards Killed',
+                                        num: 0
+                                    }
+                                },
+                                various: {
+                                    goldSpent: {
+                                        title: 'Gold Spent',
+                                        num: 0
+                                    },
+                                    largestCriticalStrike: {
+                                        title: 'Largest Critical Strike',
+                                        num: 0
+                                    },
+                                    largestMultiKill: {
+                                        title: 'Largest Multi-Kill',
+                                        num: 0
+                                    },
+                                    totalTimeCrowdControlDealt: {
+                                        title: 'Total Time Crowd Control Dealt',
+                                        num: 0
+                                    },
+                                    totalMinionsKilled: {
+                                        title: 'Total Minions Killed',
+                                        num: 0
+                                    },
+                                    turretKills: {
+                                        title: 'Turrets Killed',
+                                        num: 0
+                                    },
+                                    inhibitorKills: {
+                                        title: 'Inhibitors Killed',
+                                        num: 0
+                                    }
+                                }
+                            }
+                            var charts = data.basic.charts
+
+                            for (const key in data.basic.stats.stats) {
+                                if (data.basic.stats.stats.hasOwnProperty(key)) {
+                                    const element = data.basic.stats.stats[key];
+                                    for (const stat in charts) {
+                                        if (charts.hasOwnProperty(stat)) {
+                                            const el = charts[stat];
+                                            for (const ind in el) {
+                                                if (el.hasOwnProperty(ind)) {
+                                                    const fin = el[ind];
+                                                    if(ind == key){
+                                                        charts[stat][key].num = element
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
                             var top = state.summoner[data.participantIdentities[element.participantId - 1].player.summonerId].topStats
                             for (const i in top) {
                                 if (top.hasOwnProperty(i)) {
                                     const place = top[i];
                                     for (const stat in place) {
                                         if (place.hasOwnProperty(stat)) {
-                                            // console.log('place', place)
                                             if (data.basic.stats.stats[stat]) {
-                                                // console.log('place@stat', place[stat])
-                                                if (data.basic.stats.stats[stat] > place[stat]) {
-                                                    place[stat] = data.basic.stats.stats[stat]
-                                                    // console.log('stat', place[stat])
+                                                if (data.basic.stats.stats[stat] > place[stat].num) {
+                                                    place[stat].num = data.basic.stats.stats[stat]
                                                 }
                                             }
                                         }

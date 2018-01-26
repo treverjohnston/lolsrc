@@ -2,9 +2,8 @@
     <q-layout class="main" ref="layout">
         <div v-if="!you.id" class="row justify-center">
         </div>
-        <div v-if="you && you.topStats">
-            <chart :chart-data="datacollection"></chart>
-        </div>
+        <q-btn class="white" @click="fillData">D</q-btn>
+        <chart :chart-data="datacollection"></chart>
         <div v-if="you.matches != 0 && you.id" class="row justify-center white">
             <div class="col-md-3 self-center text-center mobile-hide" v-if="!test">
                 <h2>Top Champs</h2>
@@ -1323,7 +1322,9 @@
                 iconUrl: "http://ddragon.leagueoflegends.com/cdn/8.2.1/img/profileicon/",
                 scoreUrl: "http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/",
                 showTop: false,
-                datacollection: null
+                datacollection: null,
+                datacollectionH: null,
+                which: 1
 
             }
         },
@@ -1383,50 +1384,295 @@
                 this.$store.dispatch('getSingleMatches', id)
             },
             fillData() {
-                this.datacollection = {
-                    labels: this.getTitles(),
-                    datasets: [
-                        {
-                            label: 'Damage',
-                            backgroundColor: '#f87979',
-                            data: this.getStats()
+                switch (this.which) {
+                    case 1:
+                        this.datacollection = {
+                            labels: [this.getDamage(), this.getCurrentDamage()],
+                            datasets: [
+                                {
+                                    label: 'Top Damage',
+                                    backgroundColor: 'blue',
+                                    data: this.getDStats()
+                                },
+                                {
+                                    label: 'Match Damage',
+                                    backgroundColor: 'red',
+                                    data: this.getCDStats()
+                                }
+                            ]
                         }
-                    ]
+                        this.which += 1
+
+                        break;
+                    case 2:
+                        this.datacollection = {
+                            labels: this.getHeal(),
+                            datasets: [
+                                {
+                                    label: 'Heal',
+                                    backgroundColor: 'red',
+                                    data: this.getHealStats()
+                                }
+                            ]
+                        }
+                        this.which += 1
+                        break;
+                    case 3:
+                        this.datacollection = {
+                            labels: this.getMag(),
+                            datasets: [
+                                {
+                                    label: 'Magic',
+                                    backgroundColor: '#f87979',
+                                    data: this.getMagStats()
+                                }
+                            ]
+                        }
+                        this.which += 1
+                        break;
+                    case 4:
+                        this.datacollection = {
+                            labels: this.getPhys(),
+                            datasets: [
+                                {
+                                    label: 'Physical',
+                                    backgroundColor: '#f87979',
+                                    data: this.getPhysStats()
+                                }
+                            ]
+                        }
+                        this.which += 1
+                        break;
+                    case 5:
+                        this.datacollection = {
+                            labels: this.getTrue(),
+                            datasets: [
+                                {
+                                    label: 'True',
+                                    backgroundColor: '#f87979',
+                                    data: this.getTrueStats()
+                                }
+                            ]
+                        }
+                        this.which += 1
+                        break;
+                    case 6:
+                        this.datacollection = {
+                            labels: this.getVar(),
+                            datasets: [
+                                {
+                                    label: 'Various',
+                                    backgroundColor: '#f87979',
+                                    data: this.getVarStats()
+                                }
+                            ]
+                        }
+                        this.which += 1
+                        break;
+                    case 7:
+                        this.datacollection = {
+                            labels: this.getVision(),
+                            datasets: [
+                                {
+                                    label: 'Vision',
+                                                backgroundColor: '#f87979',
+                                                data: this.getVisionStats()
+                                }
+                            ]
+                        }
+                        this.which = 1
+                        break;
                 }
             },
-            getTitles() {
+            getDamage() {
                 var title = []
-
-                for (var stat in this.you.topStats.damage) {
-                    title.push(stat)
+                for (const stat in this.you.topStats.damage) {
+                    if (this.you.topStats.damage.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.damage[stat];
+                        title.push(el.title)
+                    }
                 }
-                console.log('title', title)
+
                 return title
             },
-            getStats() {
-                var stats = []
-                for (var stat in this.you.topStats.damage) {
-                    stats.push(this.you.topStats.damage[stat])
+            getCurrentDamage() {
+                var title = []
+                for (const stat in this.currentMatch.basic.charts.damage) {
+                    if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.damage[stat];
+                        title.push(el.title)
+                    }
                 }
-                console.log('stats', stats)
+
+                return title
+            },
+            getHeal() {
+                var title = []
+                for (const stat in this.you.topStats.heal) {
+                    if (this.you.topStats.heal.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.heal[stat];
+                        title.push(el.title)
+                    }
+                }
+
+                return title
+            },
+            getMag() {
+                var title = []
+                for (const stat in this.you.topStats.magic) {
+                    if (this.you.topStats.magic.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.magic[stat];
+                        title.push(el.title)
+                    }
+                }
+
+                return title
+            },
+            getPhys() {
+                var title = []
+                for (const stat in this.you.topStats.physical) {
+                    if (this.you.topStats.physical.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.physical[stat];
+                        title.push(el.title)
+                    }
+                }
+
+                return title
+            },
+            getTrue() {
+                var title = []
+                for (const stat in this.you.topStats.true) {
+                    if (this.you.topStats.true.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.true[stat];
+                        title.push(el.title)
+                    }
+                }
+
+                return title
+            },
+            getVar() {
+                var title = []
+                for (const stat in this.you.topStats.various) {
+                    if (this.you.topStats.various.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.various[stat];
+                        title.push(el.title)
+                    }
+                }
+
+                return title
+            },
+            getVision() {
+                var title = []
+                for (const stat in this.you.topStats.vision) {
+                    if (this.you.topStats.vision.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.vision[stat];
+                        title.push(el.title)
+                    }
+                }
+
+                return title
+            },
+            getDStats() {
+                var stats = []
+                for (const stat in this.you.topStats.damage) {
+                    if (this.you.topStats.damage.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.damage[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getCDStats() {
+                var stats = []
+                for (const stat in this.currentMatch.basic.charts.damage) {
+                    if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts.damage[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getHealStats() {
+                var stats = []
+                for (const stat in this.you.topStats.heal) {
+                    if (this.you.topStats.heal.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.heal[stat];
+                        stats.push(el.num)
+                    }
+                }
+                return stats
+            },
+            getMagStats() {
+                var stats = []
+                for (const stat in this.you.topStats.magic) {
+                    if (this.you.topStats.magic.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.magic[stat];
+                        stats.push(el.num)
+                    }
+                }
+
+                return stats
+            },
+            getPhysStats() {
+                var stats = []
+                for (const stat in this.you.topStats.physical) {
+                    if (this.you.topStats.physical.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.physical[stat];
+                        stats.push(el.num)
+                    }
+                }
+
+                return stats
+            },
+            getTrueStats() {
+                var stats = []
+                for (const stat in this.you.topStats.true) {
+                    if (this.you.topStats.true.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.true[stat];
+                        stats.push(el.num)
+                    }
+                }
+
+                return stats
+            },
+            getVarStats() {
+                var stats = []
+                for (const stat in this.you.topStats.various) {
+                    if (this.you.topStats.various.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.various[stat];
+                        stats.push(el.num)
+                    }
+                }
+
+                return stats
+            },
+            getVisionStats() {
+                var stats = []
+                for (const stat in this.you.topStats.vision) {
+                    if (this.you.topStats.vision.hasOwnProperty(stat)) {
+                        const el = this.you.topStats.vision[stat];
+                        stats.push(el.num)
+                    }
+                }
+
                 return stats
             },
             keepTrying() {
-                if (this.you.topStats) {
-                    this.fillData()
-                } else {
-                    setTimeout(this.keepTrying, 3000)
-                }
+                // if (this.you.topStats && Object.keys(this.you.matches).length == 20) {
+                //     this.fillData()
+                // } else {
+                //     setTimeout(this.keepTrying, 3000)
+                // }
             }
 
 
         },
         mounted() {
             this.$store.dispatch('getAllChampionsStatic')
-            if (this.you.topStats) {
-                this.fillData()
+            if (this.you.topStats && Object.keys(this.you.matches).length == 20) {
+                // this.fillData()
             } else {
-                setTimeout(this.keepTrying, 3000)
+                // setTimeout(this.keepTrying, 3000)
             }
         }
     }
