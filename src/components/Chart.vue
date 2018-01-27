@@ -1,6 +1,6 @@
 
 <script>
-    import { Bar, mixins } from 'vue-chartjs'
+    import { HorizontalBar, mixins } from 'vue-chartjs'
     const { reactiveProp } = mixins
     export default {
         name: 'chart',
@@ -8,7 +8,7 @@
             return {}
         },
         mixins: [reactiveProp],
-        extends: Bar,
+        extends: HorizontalBar,
         props: ['options'],
         mounted() {
             this.renderChart(this.chartData, this.options)

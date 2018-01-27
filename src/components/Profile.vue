@@ -89,7 +89,7 @@
                                 Magic Damage Dealt
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.magic.magicDamageDealt}}
+                                {{you.topStats.magicDamageDealt}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -99,7 +99,7 @@
                                 Magic Damage Dealt To Champions
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.magic.magicDamageDealtToChampions}}
+                                {{you.topStats.magicDamageDealtToChampions}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -109,7 +109,7 @@
                                 Magic Damage Taken
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.magic.magicalDamageTaken}}
+                                {{you.topStats.magicalDamageTaken}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -128,7 +128,7 @@
                                 Physical Damage Dealt
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.physical.physicalDamageDealt}}
+                                {{you.topStats.DamageDealt}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -138,7 +138,7 @@
                                 Physical Damage Dealt To Champions
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.physical.physicalDamageDealtToChampions}}
+                                {{you.topStats.DamageDealtToChampions}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -148,7 +148,7 @@
                                 Physical Damage Taken
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.physical.physicalDamageTaken}}
+                                {{you.topStats.DamageTaken}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -167,7 +167,7 @@
                                 True Damage Dealt
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.true.trueDamageDealt}}
+                                {{you.topStats.trueDamageDealt}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -179,7 +179,7 @@
                                 True Damage Dealt To Champions
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.true.trueDamageDealtToChampions}}
+                                {{you.topStats.trueDamageDealtToChampions}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -189,7 +189,7 @@
                                 True Damage Taken
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.true.trueDamageTaken}}
+                                {{you.topStats.trueDamageTaken}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -208,7 +208,7 @@
                                 Total Damage Taken
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.damage.totalDamageTaken}}
+                                {{you.topStats.totalDamageTaken}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -218,7 +218,7 @@
                                 Damage Dealt To Objectives
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.damage.damageDealtToObjectives}}
+                                {{you.topStats.damageDealtToObjectives}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -228,7 +228,7 @@
                                 Damage Self Mitigated
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.damage.damageSelfMitigated}}
+                                {{you.topStats.damageSelfMitigated}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
@@ -238,11 +238,11 @@
                                 Damage Dealt To Turrets
                             </q-item-tile>
                             <q-item-tile sublabel>
-                                {{you.topStats.damage.damageDealtToTurrets}}
+                                {{you.topStats.damageDealtToTurrets}}
                             </q-item-tile>
                         </q-item-main>
                     </div>
-                    <div class="col-xs-12 text-center">
+                    <!-- <div class="col-xs-12 text-center">
                         <hr class="bhr">
                         <q-item-main class="name">
                             <q-item-tile label>
@@ -393,7 +393,7 @@
                                 {{you.topStats.various.inhibitorKills}}
                             </q-item-tile>
                         </q-item-main>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div v-if="you.matches" class="col-xs-12 col-md-8">
@@ -454,7 +454,7 @@
                             Magic Damage Dealt
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.magic.magicDamageDealt}}
+                            {{you.topStats.magicDamageDealt}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -464,7 +464,7 @@
                             Magic Damage Dealt To Champions
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.magic.magicDamageDealtToChampions}}
+                            {{you.topStats.magicDamageDealtToChampions}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -474,7 +474,7 @@
                             Magic Damage Taken
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.magic.magicalDamageTaken}}
+                            {{you.topStats.magicalDamageTaken}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -493,7 +493,7 @@
                             Physical Damage Dealt
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.physical.physicalDamageDealt}}
+                            {{you.topStatsDamageDealt}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -503,7 +503,7 @@
                             Physical Damage Dealt To Champions
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.physical.physicalDamageDealtToChampions}}
+                            {{you.topStatsDamageDealtToChampions}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -513,7 +513,7 @@
                             Physical Damage Taken
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.physical.physicalDamageTaken}}
+                            {{you.topStatsDamageTaken}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -532,7 +532,7 @@
                             True Damage Dealt
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.true.trueDamageDealt}}
+                            {{you.topStats.trueDamageDealt}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -544,7 +544,7 @@
                             True Damage Dealt To Champions
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.true.trueDamageDealtToChampions}}
+                            {{you.topStats.trueDamageDealtToChampions}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -554,7 +554,7 @@
                             True Damage Taken
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.true.trueDamageTaken}}
+                            {{you.topStats.trueDamageTaken}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -573,7 +573,7 @@
                             Total Damage Taken
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.damage.totalDamageTaken}}
+                            {{you.topStats.totalDamageTaken}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -583,7 +583,7 @@
                             Damage Dealt To Objectives
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.damage.damageDealtToObjectives}}
+                            {{you.topStats.damageDealtToObjectives}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -593,7 +593,7 @@
                             Damage Self Mitigated
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.damage.damageSelfMitigated}}
+                            {{you.topStats.damageSelfMitigated}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
@@ -603,11 +603,11 @@
                             Damage Dealt To Turrets
                         </q-item-tile>
                         <q-item-tile sublabel>
-                            {{you.topStats.damage.damageDealtToTurrets}}
+                            {{you.topStats.damageDealtToTurrets}}
                         </q-item-tile>
                     </q-item-main>
                 </div>
-                <div class="col-xs-12 text-center">
+                <!-- <div class="col-xs-12 text-center">
                     <hr class="bhr">
                     <q-item-main class="name">
                         <q-item-tile label>
@@ -635,9 +635,9 @@
                             {{you.topStats.heal.totalUnitsHealed}}
                         </q-item-tile>
                     </q-item-main>
-                </div>
+                </div> -->
 
-                <div class="col-xs-12 text-center">
+                <!-- <div class="col-xs-12 text-center">
                     <hr class="bhr">
                     <q-item-main class="name">
                         <q-item-tile label>
@@ -758,7 +758,7 @@
                             {{you.topStats.various.inhibitorKills}}
                         </q-item-tile>
                     </q-item-main>
-                </div>
+                </div> -->
             </div>
             </div>
             <div class="row justify-around">
@@ -1324,7 +1324,10 @@
                 showTop: false,
                 datacollection: null,
                 datacollectionH: null,
-                which: 1
+                which: 1,
+                kind: ['top', 'low'],
+                whichStat: ['Magic Damage Dealt', 'True Damage Dealt', 'Physical Damage Dealt'],
+                whichStatLow: ['magicDamageDealt', 'trueDamageDealt', 'physicalDamageDealt']
 
             }
         },
@@ -1407,7 +1410,7 @@
                                 {
                                     label: 'Top Damage',
                                     backgroundColor: 'rgba(0, 100, 0, 0.815)',
-                                    data: this.getDStats()
+                                    data: this.getDamage()
                                 }
                             ]
                         }
@@ -1416,29 +1419,9 @@
                         break;
                     case 2:
                         this.datacollection = {
-                            labels: this.getHeal(),
-                            datasets: [
-                                {
-                                    label: 'Top Heal',
-                                    backgroundColor: 'red',
-                                    data: this.getHealStats()
-                                },
-                                {
-                                    label: 'Current Match Heal',
-                                    backgroundColor: 'green',
-                                    data: this.getCHealStats()
-                                },
-                                {
-                                    label: 'Lowest Heal',
-                                    backgroundColor: 'red',
-                                    data: this.getLHealStats()
-                                },
-                                {
-                                    label: 'Average Heal',
-                                    backgroundColor: 'blue',
-                                    data: this.getAvgHealStats()
-                                }
-                            ]
+                            // labels: this.getDamage(),
+                            labels: this.whichStat,
+                            datasets: this.getWhichStat()
                         }
                         this.which += 1
                         break;
@@ -1446,154 +1429,157 @@
                         this.datacollection = {
                             labels: this.getMag(),
                             datasets: [
-                            {
-                                label: 'Top Magic',
-                                backgroundColor: 'red',
-                                data: this.getMagStats()
-                            },
-                            {
-                                label: 'Current Match Magic',
-                                backgroundColor: 'green',
-                                data: this.getCMagStats()
-                            },
-                            {
-                                label: 'Lowest Magic',
-                                backgroundColor: 'red',
-                                data: this.getLMagStats()
-                            },
-                            {
-                                label: 'Average Magic',
-                                backgroundColor: 'blue',
-                                data: this.getAvgMagStats()
-                            }
+                                {
+                                    label: 'Top Magic',
+                                    backgroundColor: 'red',
+                                    data: this.getMagStats()
+                                },
+                                {
+                                    label: 'Current Match Magic',
+                                    backgroundColor: 'green',
+                                    data: this.getCMagStats()
+                                },
+                                {
+                                    label: 'Lowest Magic',
+                                    backgroundColor: 'red',
+                                    data: this.getLMagStats()
+                                },
+                                {
+                                    label: 'Average Magic',
+                                    backgroundColor: 'blue',
+                                    data: this.getAvgMagStats()
+                                }
                             ]
                         }
                         this.which += 1
-                        break;
-                    case 4:
-                        this.datacollection = {
-                            labels: this.getPhys(),
-                            datasets: [
-                            {
-                                label: 'Top Physical',
-                                backgroundColor: 'red',
-                                data: this.getPhysStats()
-                            },
-                            {
-                                label: 'Current Match Physical',
-                                backgroundColor: 'green',
-                                data: this.getCPhysStats()
-                            },
-                            {
-                                label: 'Lowest Physical',
-                                backgroundColor: 'red',
-                                data: this.getLPhysStats()
-                            },
-                            {
-                                label: 'Average Physical',
-                                backgroundColor: 'blue',
-                                data: this.getAvgPhysStats()
-                            }
-                            ]
-                        }
-                        this.which += 1
-                        break;
-                    case 5:
-                        this.datacollection = {
-                            labels: this.getTrue(),
-                            datasets: [
-                            {
-                                label: 'Top True',
-                                backgroundColor: 'red',
-                                data: this.getTrueStats()
-                            },
-                            {
-                                label: 'Current Match True',
-                                backgroundColor: 'green',
-                                data: this.getCTrueStats()
-                            },
-                            {
-                                label: 'Lowest True',
-                                backgroundColor: 'red',
-                                data: this.getLTrueStats()
-                            },
-                            {
-                                label: 'Average True',
-                                backgroundColor: 'blue',
-                                data: this.getAvgTrueStats()
-                            }
-                            ]
-                        }
-                        this.which += 1
-                        break;
-                    case 6:
-                        this.datacollection = {
-                            labels: this.getVar(),
-                            datasets: [
-                            {
-                                label: 'Top Various',
-                                backgroundColor: 'red',
-                                data: this.getVarStats()
-                            },
-                            {
-                                label: 'Current Match Various',
-                                backgroundColor: 'green',
-                                data: this.getCVarStats()
-                            },
-                            {
-                                label: 'Lowest Various',
-                                backgroundColor: 'red',
-                                data: this.getLVarStats()
-                            },
-                            {
-                                label: 'Average Various',
-                                backgroundColor: 'blue',
-                                data: this.getAvgVarStats()
-                            }
-                            ]
-                        }
-                        this.which += 1
-                        break;
-                    case 7:
-                        this.datacollection = {
-                            labels: this.getVision(),
-                            datasets: [
-                            {
-                                label: 'Top Vision',
-                                backgroundColor: 'red',
-                                data: this.getVisionStats()
-                            },
-                            {
-                                label: 'Current Match Vision',
-                                backgroundColor: 'green',
-                                data: this.getCVisionStats()
-                            },
-                            {
-                                label: 'Lowest Vision',
-                                backgroundColor: 'red',
-                                data: this.getVisionStats()
-                            },
-                            {
-                                label: 'Average Vision',
-                                backgroundColor: 'blue',
-                                data: this.getAvgVisionStats()
-                            }
-                            ]
-                        }
-                        this.which = 1
                         break;
                 }
             },
-            getDamage() {
-                var final = []
+            getKind() {
                 var title = []
-                for (const stat in this.you.topStats.damage) {
-                    if (this.you.topStats.damage.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.damage[stat];
-                        title.push(el.title)
+                for (let i = 0; i < this.kind.length; i++) {
+                    const place = this.kind[i];
+
+                    switch (place) {
+                        case 'top':
+                            var kind = this.you.topStats
+                            for (const stat in kind) {
+                                if (kind.hasOwnProperty(stat)) {
+                                    const el = kind[stat]
+                                    if (this.whichStat.includes(el.title)) {
+                                        title.push(el.title)
+                                    }
+                                }
+                            }
+                            break;
+                        case 'avg':
+                            var kind = this.you.avgStats
+                            for (const stat in kind) {
+                                if (kind.hasOwnProperty(stat)) {
+                                    const el = kind[stat]
+                                    if (this.whichStat.includes(el.title)) {
+                                        title.push(el.title)
+                                    }
+                                }
+                            }
+                            break;
+                        case 'low':
+                            var kind = this.you.lowStats
+                            for (const stat in kind) {
+                                if (kind.hasOwnProperty(stat)) {
+                                    const el = kind[stat]
+                                    if (this.whichStat.includes(el.title)) {
+                                        title.push(el.title)
+                                    }
+                                }
+                            }
+                            break;
+                        case 'current':
+                            var kind = this.you.currentStats
+                            for (const stat in kind) {
+                                if (kind.hasOwnProperty(stat)) {
+                                    const el = kind[stat]
+                                    if (this.whichStat.includes(el.title)) {
+                                        title.push(el.title)
+                                    }
+                                }
+                            }
+                            break;
+                    }
+
+                }
+                return title
+            },
+            getWhichStat() {
+                var title = []
+                for (const kind in this.kind) {
+                    if (this.kind.hasOwnProperty(kind)) {
+                        const element = this.kind[kind];
+                        switch (element) {
+                            case 'top':
+                                for (const stat in this.you.topStats) {
+                                    if (this.you.topStats.hasOwnProperty(stat)) {
+                                        const el = this.you.topStats[stat]
+                                        if (this.whichStat.includes(el.title)) {
+                                            var obj = {
+                                                label: el.title,
+                                                backgroundColor: 'blue',
+                                                data: [el.num]
+                                            }
+                                            title.push(obj)
+                                            console.log(title)
+                                        }
+                                    }
+                                }
+                                break;
+                            case 'low':
+                                for (const stat in this.you.lowStats) {
+                                    if (this.you.lowStats.hasOwnProperty(stat)) {
+                                        const el = this.you.lowStats[stat]
+                                        if (this.whichStat.includes(el.title)) {
+                                            var obj = {
+                                                label: el.title,
+                                                backgroundColor: 'red',
+                                                data: [el.num]
+                                            }
+                                            title.push(obj)
+                                            console.log(title)
+                                        }
+                                    }
+                                }
+                                break;
+                        }
                     }
                 }
-                final.push(title)
+
+
+                // for (const stat in this.you.lowStats) {
+                //     if (this.you.lowStats.hasOwnProperty(stat)) {
+                //         const el = this.you.lowStats[stat]
+                //             if (this.whichStat.includes(el.title)) {
+                //                 var obj = {
+                //                     label: el.title,
+                //                     backgroundColor: 'blue',
+                //                     data: [el.num]
+                //                 }
+                //                 title.push(obj)
+                //                 console.log(title)
+                //         }
+                //     }
+                // } 
+                return title
+            },
+            getDamage() {
+                var title = []
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
+                        // if(el.title.includes('Magic Damage Dealt')){
+                        title.push(el.title)
+                        // }
+
+                    }
+                }
                 return title
             },
             getCurrentDamage() {
@@ -1620,9 +1606,9 @@
             },
             getMag() {
                 var title = []
-                for (const stat in this.you.topStats.magic) {
-                    if (this.you.topStats.magic.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.magic[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         title.push(el.title)
                     }
                 }
@@ -1631,9 +1617,9 @@
             },
             getPhys() {
                 var title = []
-                for (const stat in this.you.topStats.physical) {
-                    if (this.you.topStats.physical.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.physical[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         title.push(el.title)
                     }
                 }
@@ -1642,9 +1628,9 @@
             },
             getTrue() {
                 var title = []
-                for (const stat in this.you.topStats.true) {
-                    if (this.you.topStats.true.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.true[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         title.push(el.title)
                     }
                 }
@@ -1673,12 +1659,21 @@
 
                 return title
             },
-            getDStats() {
+            getStats() {
                 var final = []
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const element = this.you.topStats[stat];
+
+                    }
+                }
+
+            },
+            getDStats() {
                 var stats = []
-                for (const stat in this.you.topStats.damage) {
-                    if (this.you.topStats.damage.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.damage[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         stats.push(el.num)
                     }
                 }
@@ -1686,9 +1681,9 @@
             },
             getCDStats() {
                 var stats = []
-                for (const stat in this.currentMatch.basic.charts.damage) {
-                    if (this.currentMatch.basic.charts.damage.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.damage[stat];
+                for (const stat in this.currentMatch.basic.charts) {
+                    if (this.currentMatch.basic.charts.hasOwnProperty(stat)) {
+                        const el = this.currentMatch.basic.charts[stat];
                         stats.push(el.num)
                     }
                 }
@@ -1696,9 +1691,9 @@
             },
             getLDStats() {
                 var stats = []
-                for (const stat in this.you.lowStats.damage) {
-                    if (this.you.lowStats.damage.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.damage[stat];
+                for (const stat in this.you.lowStats) {
+                    if (this.you.lowStats.hasOwnProperty(stat)) {
+                        const el = this.you.lowStats[stat];
                         stats.push(el.num)
                     }
                 }
@@ -1706,10 +1701,10 @@
             },
             getADStats() {
                 var stats = []
-                for (const stat in this.you.avgStats.damage) {
-                    if (this.you.avgStats.damage.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.damage[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                for (const stat in this.you.avgStats) {
+                    if (this.you.avgStats.hasOwnProperty(stat)) {
+                        const el = this.you.avgStats[stat];
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
@@ -1749,16 +1744,16 @@
                 for (const stat in this.you.avgStats.heal) {
                     if (this.you.avgStats.heal.hasOwnProperty(stat)) {
                         const el = this.you.avgStats.heal[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
             },
             getMagStats() {
                 var stats = []
-                for (const stat in this.you.topStats.magic) {
-                    if (this.you.topStats.magic.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.magic[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         stats.push(el.num)
                     }
                 }
@@ -1790,16 +1785,16 @@
                 for (const stat in this.you.avgStats.magic) {
                     if (this.you.avgStats.magic.hasOwnProperty(stat)) {
                         const el = this.you.avgStats.magic[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
             },
             getPhysStats() {
                 var stats = []
-                for (const stat in this.you.topStats.physical) {
-                    if (this.you.topStats.physical.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.physical[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         stats.push(el.num)
                     }
                 }
@@ -1831,16 +1826,16 @@
                 for (const stat in this.you.avgStats.physical) {
                     if (this.you.avgStats.physical.hasOwnProperty(stat)) {
                         const el = this.you.avgStats.physical[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
             },
             getTrueStats() {
                 var stats = []
-                for (const stat in this.you.topStats.true) {
-                    if (this.you.topStats.true.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.true[stat];
+                for (const stat in this.you.topStats) {
+                    if (this.you.topStats.hasOwnProperty(stat)) {
+                        const el = this.you.topStats[stat];
                         stats.push(el.num)
                     }
                 }
@@ -1872,7 +1867,7 @@
                 for (const stat in this.you.avgStats.true) {
                     if (this.you.avgStats.true.hasOwnProperty(stat)) {
                         const el = this.you.avgStats.true[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
@@ -1913,7 +1908,7 @@
                 for (const stat in this.you.avgStats.various) {
                     if (this.you.avgStats.various.hasOwnProperty(stat)) {
                         const el = this.you.avgStats.various[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
@@ -1954,7 +1949,7 @@
                 for (const stat in this.you.avgStats.vision) {
                     if (this.you.avgStats.vision.hasOwnProperty(stat)) {
                         const el = this.you.avgStats.vision[stat];
-                        stats.push(el.num/Object.keys(this.you.matches).length)
+                        stats.push(el.num / Object.keys(this.you.matches).length)
                     }
                 }
                 return stats
