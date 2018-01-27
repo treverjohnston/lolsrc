@@ -2,8 +2,7 @@
     <q-layout class="main" ref="layout">
         <div v-if="!you.id" class="row justify-center">
         </div>
-        <q-btn class="white" @click="fillData">D</q-btn>
-        <chart :chart-data="datacollection"></chart>
+
         <div v-if="you.matches != 0 && you.id" class="row justify-center white">
             <div class="col-md-3 self-center text-center mobile-hide" v-if="!test">
                 <h2>Top Champs</h2>
@@ -66,13 +65,13 @@
                     </div>
                 </div>
                 <div v-if="you && you.topStats" class="row justify-center mobile-only">
-                    <div class="col-xs-3">
+                    <!-- <div class="col-xs-3">
                         <q-btn @click="$refs.topModal.open()" outline>See Top Stats?</q-btn>
-                    </div>
+                    </div> -->
                 </div>
-                <q-btn no-caps outline @click="showTop = !showTop" class="desktop-only">
+                <!-- <q-btn no-caps outline @click="showTop = !showTop" class="desktop-only">
                     <h5 class="text-center">Top Stats Last 20 Matches</h5>
-                </q-btn>
+                </q-btn> -->
                 <div v-if="you && you.topStats && showTop" class="row justify-around desktop-only">
                     <div class="col-xs-12 text-center">
                         <hr class="bhr">
@@ -242,158 +241,7 @@
                             </q-item-tile>
                         </q-item-main>
                     </div>
-                    <!-- <div class="col-xs-12 text-center">
-                        <hr class="bhr">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Heal Stats
-                            </q-item-tile>
-                        </q-item-main>
-                        <hr class="bhr">
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Total Heal
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.heal.totalHeal}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Total Units Healed
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.heal.totalUnitsHealed}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
 
-                    <div class="col-xs-12 text-center">
-                        <hr class="bhr">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Vision Stats
-                            </q-item-tile>
-                        </q-item-main>
-                        <hr class="bhr">
-                    </div>
-
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Vision Score
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.vision.visionScore}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Wards Placed
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.vision.wardsPlaced}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Wards Killed
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.vision.wardsKilled}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-12 text-center">
-                        <hr class="bhr">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Various Stats
-                            </q-item-tile>
-                        </q-item-main>
-                        <hr class="bhr">
-                    </div>
-
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Gold Spent
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.goldSpent}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Largest Critical Strike
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.largestCriticalStrike}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Largest Multi-Kill
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.largestMultiKill}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-
-
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Total Crowd Control Dealt
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.totalTimeCrowdControlDealt}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Total Minions Killed
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.totalMinionsKilled}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Turret Kills
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.turretKills}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-item-main class="name">
-                            <q-item-tile label>
-                                Inhibitor Kills
-                            </q-item-tile>
-                            <q-item-tile sublabel>
-                                {{you.topStats.various.inhibitorKills}}
-                            </q-item-tile>
-                        </q-item-main>
-                    </div> -->
                 </div>
             </div>
             <div v-if="you.matches" class="col-xs-12 col-md-8">
@@ -436,337 +284,81 @@
                 </div>
             </div>
         </div>
-        <q-modal v-if="you && you.topStats" ref="topModal" minimized>
-            <div class="row justify-around mobile-only">
-                <div class="col-xs-12 text-center">
-                    <h5 class="text-center">Top Stats Last 20 Matches</h5>
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
+        <div v-if="Object.keys(you.matches).length >= 15" class="row justify-center">
+            <q-collapsible id="chart" ref="collapse" class="white collapsible" label="View Graph Options">
                 <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Damage Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.magicDamageDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Damage Dealt To Champions
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.magicDamageDealtToChampions}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.magicalDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Damage Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStatsDamageDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Damage Dealt To Champions
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStatsDamageDealtToChampions}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStatsDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Damage Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.trueDamageDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
+                    <q-field class="white" helper="Choose your options">
+                        <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                     { label: 'Physical Damage Dealt To Champions', value: 'Physical Damage Dealt To Champions', color: 'red' },
+                     { label: 'Physical Damage Taken', value: 'Physical Damage Taken', color: 'red' },
+                     { label: 'Physical Damage Dealt', value: 'Physical Damage Dealt', color: 'red' },
+                    ]" />
+                        <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                    
+                     { label: 'Magic Damage Dealt', value: 'Magic Damage Dealt', color: 'purple' },
+                     { label: 'Magic Damage Dealt To Champions', value: 'Magic Damage Dealt To Champions', color: 'purple' },
+                     { label: 'Magic Damage Taken', value: 'Magic Damage Taken', color: 'purple' }
+                    ]" />
+                    </q-field>
 
+                </div>
+                <div class="col-xs-5">
+                    <q-field class="white" helper="Choose your options">
 
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Damage Dealt To Champions
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.trueDamageDealtToChampions}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.trueDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.totalDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Dealt To Objectives
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.damageDealtToObjectives}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Self Mitigated
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.damageSelfMitigated}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Dealt To Turrets
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.damageDealtToTurrets}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <!-- <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Heal Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Heal
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.heal.totalHeal}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Units Healed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.heal.totalUnitsHealed}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div> -->
+                        <q-option-group class="white" type="toggle" v-model="whichStat" :options="[ 
+                     { label: 'True Damage Taken', value: 'True Damage Taken', color: 'orange' },
+                     { label: 'True Damage Dealt To Champions', value: 'True Damage Dealt To Champions', color: 'orange' },
+                     { label: 'True Damage Dealt', value: 'True Damage Dealt', color: 'orange' }
+                     
+                    ]" />
+                        <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                    { label: 'Total Damage Taken', value: 'Total Damage Taken' },
+                { label: 'Total Damage Dealt To Objectives', value: 'Total Damage Dealt To Objectives' },
+                 { label: 'Damage Dealt To Turrets', value: 'Damage Dealt To Turrets' },
+                 { label: 'Damage Self Mitigated', value: 'Damage Self Mitigated' },
+                
+                ]" />
+                    </q-field>
 
-                <!-- <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Vision Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
                 </div>
+            </q-collapsible>
 
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Vision Score
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.vision.visionScore}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Wards Placed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.vision.wardsPlaced}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Wards Killed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.vision.wardsKilled}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Various Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
+            <div class="col-xs-10 desktop-only">
+                <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModal.open()">See Graphs</q-btn>
 
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Gold Spent
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.goldSpent}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Largest Critical Strike
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.largestCriticalStrike}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Largest Multi-Kill
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.largestMultiKill}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Crowd Control Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.totalTimeCrowdControlDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Minions Killed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.totalMinionsKilled}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Turret Kills
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.turretKills}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Inhibitor Kills
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{you.topStats.various.inhibitorKills}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div> -->
             </div>
+            <div class="col-xs-10 mobile-only">
+                <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModalMobile.open()">See Graphs</q-btn>
+
             </div>
-            <div class="row justify-around">
+        </div>
+        <q-modal v-if="you && you.topStats" ref="chartModal" minimized>
+            <div class="row justify-between">
+                <div class="col-xs-11">
+                    <chart class="chart" :chart-data="datacollection"></chart>
+                </div>
                 <div class="col-xs-5">
-                    <q-btn push no-caps outline @click="$refs.topModal.close()">Done</q-btn>
+                    <q-btn push no-caps outline @click="$refs.chartModal.close()">Done</q-btn>
+                </div>
+                <div class="col-xs-5">
+                        <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open(), swal()">Change Graph</q-btn>
                 </div>
             </div>
         </q-modal>
+        <q-modal v-if="you && you.topStats" ref="chartModalMobile" maximized>
+            <div class="row justify-between">
+                <div class="col-xs-12">
+                    <mobilechart :chart-data="datacollection"></mobilechart>
+                </div>
+                <div class="col-xs-5">
+                    <q-btn push no-caps outline @click="$refs.chartModalMobile.close()">Done</q-btn>
+                </div>
+                <div class="col-xs-5">
+                        <q-btn push no-caps outline @click="$refs.chartModalMobile.close(), $refs.collapse.open()">Change Graph</q-btn>
+                </div>
+            </div>
+        </q-modal>
+ 
         <q-modal v-if="currentMatch && currentMatch.basic && currentMatch.basic.stats && currentMatch.basic.stats.stats" ref="minimizedModal"
             minimized>
             <div class="row justify-center">
@@ -834,423 +426,15 @@
                 <div class="col-xs-5">
                     <q-btn push no-caps outline @click="$refs.minimizedModal.close()">Done</q-btn>
                 </div>
-                <div class="col-xs-5">
-                    <q-btn push no-caps outline @click="$refs.stats.open()">View More Stats</q-btn>
+                <div class="col-xs-5 desktop-only">
+                    <q-btn push no-caps outline @click="fillData(), $refs.chartModal.open()">View More Stats</q-btn>
+                </div>
+                <div class="col-xs-5 mobile-only">
+                    <q-btn push no-caps outline @click="fillData(), $refs.chartModalMobile.open()">View More Stats</q-btn>
                 </div>
             </div>
         </q-modal>
-        <q-modal v-if="currentMatch && currentMatch.basic && currentMatch.basic.stats" ref="stats" minimized class="stats">
-            <div class="row justify-around">
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Damage Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.magicDamageDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Damage Dealt To Champions
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.magicDamageDealtToChampions}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Magic Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.magicalDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Damage Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.physicalDamageDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Damage Dealt To Champions
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.physicalDamageDealtToChampions}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Physical Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.physicalDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Damage Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.trueDamageDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Damage Dealt To Champions
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.trueDamageDealtToChampions}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            True Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.trueDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Damage Taken
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.totalDamageTaken}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Dealt To Objectives
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.damageDealtToObjectives}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Self Mitigated
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.damageSelfMitigated}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Damage Dealt To Turrets
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.damageDealtToTurrets}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Heal Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Heal
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.totalHeal}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Units Healed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.totalUnitsHealed}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Vision Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Vision Score
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.visionScore}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Wards Placed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.wardsPlaced}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Wards Killed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.wardsKilled}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Blood Kill
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.firstBloodKill}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Blood Assist
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.firstBloodAssist}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Tower Kill
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.firstTowerKill}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Tower Assist
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.firstTowerAssist}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Inhibitor Kill
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.firstInhibitorKill}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            First Inhibitor Assist
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.firstInhibitorAssist}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <hr class="bhr">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Various Stats
-                        </q-item-tile>
-                    </q-item-main>
-                    <hr class="bhr">
-                </div>
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Champion Level
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.champLevel}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Gold Spent
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.goldSpent}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Largest Critical Strike
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.largestCriticalStrike}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Largest Multi-Kill
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.largestMultiKill}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Crowd Control Dealt
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.totalTimeCrowdControlDealt}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Total Minions Killed
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.totalMinionsKilled}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Turret Kills
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.turretKills}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-                <div class="col-xs-5">
-                    <q-item-main class="name">
-                        <q-item-tile label>
-                            Inhibitor Kills
-                        </q-item-tile>
-                        <q-item-tile sublabel>
-                            {{currentMatch.basic.stats.stats.inhibitorKills}}
-                        </q-item-tile>
-                    </q-item-main>
-                </div>
-
-
-                <div class="col-xs-8">
-                    <q-btn push no-caps outline @click="$refs.stats.close()">Done</q-btn>
-                </div>
-            </div>
-        </q-modal>
+       
     </q-layout>
 </template>
 
@@ -1280,15 +464,20 @@
         QModal,
         QModalLayout,
         QItemTile,
-        QTooltip
+        QTooltip,
+        QOptionGroup,
+        QField,
+        QCollapsible
     } from 'quasar'
 
 
     import Chart from './Chart'
+    import Mobilechart from './MobileChart'
     export default {
         name: 'profile',
         components: {
             Chart,
+            Mobilechart,
             QLayout,
             QToolbar,
             QToolbarTitle,
@@ -1310,7 +499,10 @@
             QModal,
             QModalLayout,
             QItemTile,
-            QTooltip
+            QTooltip,
+            QOptionGroup,
+            QField,
+            QCollapsible
         },
         data() {
             return {
@@ -1323,11 +515,7 @@
                 scoreUrl: "http://ddragon.leagueoflegends.com/cdn/5.5.1/img/ui/",
                 showTop: false,
                 datacollection: null,
-                datacollectionH: null,
-                which: 1,
-                kind: ['top', 'low'],
-                whichStat: ['Magic Damage Dealt', 'True Damage Dealt', 'Physical Damage Dealt'],
-                whichStatLow: ['magicDamageDealt', 'trueDamageDealt', 'physicalDamageDealt']
+                whichStat: ['Magic Damage Taken', 'Magic Damage Dealt', 'Magic Damage Dealt To Champions']
 
             }
         },
@@ -1364,6 +552,12 @@
             }
         },
         methods: {
+            swal(){
+                return swal({
+                                title: 'Scroll To The Bottom of the Page For Graph Options',
+                                timer: 2000
+                            })
+            },
             viewSummoner(match) {
                 this.$store.state.currentGame = match
             },
@@ -1387,198 +581,49 @@
                 this.$store.dispatch('getSingleMatches', id)
             },
             fillData() {
-                switch (this.which) {
-                    case 1:
-                        this.datacollection = {
-                            labels: this.getDamage(),
-                            datasets: [
-                                {
-                                    label: 'Lowest Damage',
-                                    backgroundColor: 'rgba(100, 0, 0, .9)',
-                                    data: this.getLDStats()
-                                },
-                                {
-                                    label: 'Average Damage',
-                                    backgroundColor: 'rgba(100, 0, 100, 0.815)',
-                                    data: this.getADStats()
-                                },
-                                {
-                                    label: 'Current Matches Damage',
-                                    backgroundColor: 'rgba(0, 0, 100, 0.815)',
-                                    data: this.getCDStats()
-                                },
-                                {
-                                    label: 'Top Damage',
-                                    backgroundColor: 'rgba(0, 100, 0, 0.815)',
-                                    data: this.getDamage()
-                                }
-                            ]
+                // switch (this.which) {
+                //     case 1:
+                this.datacollection = {
+                    labels: this.getDamage(),
+                    datasets: [
+                        {
+                            label: 'Lowest Damage',
+                            backgroundColor: 'rgba(100, 0, 0, .9)',
+                            data: this.getLDStats()
+                        },
+                        {
+                            label: 'Average Damage',
+                            backgroundColor: 'rgba(100, 0, 100, 0.815)',
+                            data: this.getADStats()
+                        },
+                        {
+                            label: 'Current Matches Damage',
+                            backgroundColor: 'rgba(0, 0, 100, 0.815)',
+                            data: this.getCDStats()
+                        },
+                        {
+                            label: 'Top Damage',
+                            backgroundColor: 'rgba(0, 100, 0, 0.815)',
+                            data: this.getDStats()
                         }
-                        this.which += 1
-
-                        break;
-                    case 2:
-                        this.datacollection = {
-                            // labels: this.getDamage(),
-                            labels: this.whichStat,
-                            datasets: this.getWhichStat()
-                        }
-                        this.which += 1
-                        break;
-                    case 3:
-                        this.datacollection = {
-                            labels: this.getMag(),
-                            datasets: [
-                                {
-                                    label: 'Top Magic',
-                                    backgroundColor: 'red',
-                                    data: this.getMagStats()
-                                },
-                                {
-                                    label: 'Current Match Magic',
-                                    backgroundColor: 'green',
-                                    data: this.getCMagStats()
-                                },
-                                {
-                                    label: 'Lowest Magic',
-                                    backgroundColor: 'red',
-                                    data: this.getLMagStats()
-                                },
-                                {
-                                    label: 'Average Magic',
-                                    backgroundColor: 'blue',
-                                    data: this.getAvgMagStats()
-                                }
-                            ]
-                        }
-                        this.which += 1
-                        break;
+                    ]
                 }
-            },
-            getKind() {
-                var title = []
-                for (let i = 0; i < this.kind.length; i++) {
-                    const place = this.kind[i];
+                // this.which += 1
 
-                    switch (place) {
-                        case 'top':
-                            var kind = this.you.topStats
-                            for (const stat in kind) {
-                                if (kind.hasOwnProperty(stat)) {
-                                    const el = kind[stat]
-                                    if (this.whichStat.includes(el.title)) {
-                                        title.push(el.title)
-                                    }
-                                }
-                            }
-                            break;
-                        case 'avg':
-                            var kind = this.you.avgStats
-                            for (const stat in kind) {
-                                if (kind.hasOwnProperty(stat)) {
-                                    const el = kind[stat]
-                                    if (this.whichStat.includes(el.title)) {
-                                        title.push(el.title)
-                                    }
-                                }
-                            }
-                            break;
-                        case 'low':
-                            var kind = this.you.lowStats
-                            for (const stat in kind) {
-                                if (kind.hasOwnProperty(stat)) {
-                                    const el = kind[stat]
-                                    if (this.whichStat.includes(el.title)) {
-                                        title.push(el.title)
-                                    }
-                                }
-                            }
-                            break;
-                        case 'current':
-                            var kind = this.you.currentStats
-                            for (const stat in kind) {
-                                if (kind.hasOwnProperty(stat)) {
-                                    const el = kind[stat]
-                                    if (this.whichStat.includes(el.title)) {
-                                        title.push(el.title)
-                                    }
-                                }
-                            }
-                            break;
-                    }
+                // break;
 
-                }
-                return title
-            },
-            getWhichStat() {
-                var title = []
-                for (const kind in this.kind) {
-                    if (this.kind.hasOwnProperty(kind)) {
-                        const element = this.kind[kind];
-                        switch (element) {
-                            case 'top':
-                                for (const stat in this.you.topStats) {
-                                    if (this.you.topStats.hasOwnProperty(stat)) {
-                                        const el = this.you.topStats[stat]
-                                        if (this.whichStat.includes(el.title)) {
-                                            var obj = {
-                                                label: el.title,
-                                                backgroundColor: 'blue',
-                                                data: [el.num]
-                                            }
-                                            title.push(obj)
-                                            console.log(title)
-                                        }
-                                    }
-                                }
-                                break;
-                            case 'low':
-                                for (const stat in this.you.lowStats) {
-                                    if (this.you.lowStats.hasOwnProperty(stat)) {
-                                        const el = this.you.lowStats[stat]
-                                        if (this.whichStat.includes(el.title)) {
-                                            var obj = {
-                                                label: el.title,
-                                                backgroundColor: 'red',
-                                                data: [el.num]
-                                            }
-                                            title.push(obj)
-                                            console.log(title)
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                    }
-                }
-
-
-                // for (const stat in this.you.lowStats) {
-                //     if (this.you.lowStats.hasOwnProperty(stat)) {
-                //         const el = this.you.lowStats[stat]
-                //             if (this.whichStat.includes(el.title)) {
-                //                 var obj = {
-                //                     label: el.title,
-                //                     backgroundColor: 'blue',
-                //                     data: [el.num]
-                //                 }
-                //                 title.push(obj)
-                //                 console.log(title)
-                //         }
-                //     }
-                // } 
-                return title
+                // }
             },
             getDamage() {
                 var title = []
                 for (const stat in this.you.topStats) {
                     if (this.you.topStats.hasOwnProperty(stat)) {
                         const el = this.you.topStats[stat];
-                        // if(el.title.includes('Magic Damage Dealt')){
-                        title.push(el.title)
-                        // }
-
+                        if (this.whichStat.includes(el.title)) {
+                            title.push(el.title)
+                        }
                     }
+
                 }
                 return title
             },
@@ -1593,88 +638,16 @@
 
                 return title
             },
-            getHeal() {
-                var title = []
-                for (const stat in this.you.topStats.heal) {
-                    if (this.you.topStats.heal.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.heal[stat];
-                        title.push(el.title)
-                    }
-                }
 
-                return title
-            },
-            getMag() {
-                var title = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const el = this.you.topStats[stat];
-                        title.push(el.title)
-                    }
-                }
 
-                return title
-            },
-            getPhys() {
-                var title = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const el = this.you.topStats[stat];
-                        title.push(el.title)
-                    }
-                }
-
-                return title
-            },
-            getTrue() {
-                var title = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const el = this.you.topStats[stat];
-                        title.push(el.title)
-                    }
-                }
-
-                return title
-            },
-            getVar() {
-                var title = []
-                for (const stat in this.you.topStats.various) {
-                    if (this.you.topStats.various.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.various[stat];
-                        title.push(el.title)
-                    }
-                }
-
-                return title
-            },
-            getVision() {
-                var title = []
-                for (const stat in this.you.topStats.vision) {
-                    if (this.you.topStats.vision.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.vision[stat];
-                        title.push(el.title)
-                    }
-                }
-
-                return title
-            },
-            getStats() {
-                var final = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const element = this.you.topStats[stat];
-
-                    }
-                }
-
-            },
             getDStats() {
                 var stats = []
                 for (const stat in this.you.topStats) {
                     if (this.you.topStats.hasOwnProperty(stat)) {
                         const el = this.you.topStats[stat];
-                        stats.push(el.num)
+                        if (this.whichStat.includes(el.title)) {
+                            stats.push(el.num)
+                        }
                     }
                 }
                 return stats
@@ -1684,7 +657,9 @@
                 for (const stat in this.currentMatch.basic.charts) {
                     if (this.currentMatch.basic.charts.hasOwnProperty(stat)) {
                         const el = this.currentMatch.basic.charts[stat];
-                        stats.push(el.num)
+                        if (this.whichStat.includes(el.title)) {
+                            stats.push(el.num)
+                        }
                     }
                 }
                 return stats
@@ -1694,7 +669,9 @@
                 for (const stat in this.you.lowStats) {
                     if (this.you.lowStats.hasOwnProperty(stat)) {
                         const el = this.you.lowStats[stat];
-                        stats.push(el.num)
+                        if (this.whichStat.includes(el.title)) {
+                            stats.push(el.num)
+                        }
                     }
                 }
                 return stats
@@ -1704,260 +681,18 @@
                 for (const stat in this.you.avgStats) {
                     if (this.you.avgStats.hasOwnProperty(stat)) {
                         const el = this.you.avgStats[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
+                        if (this.whichStat.includes(el.title)) {
+                            stats.push(el.num / Object.keys(this.you.matches).length)
+                        }
                     }
                 }
                 return stats
             },
-            getHealStats() {
-                var stats = []
-                for (const stat in this.you.topStats.heal) {
-                    if (this.you.topStats.heal.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.heal[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getCHealStats() {
-                var stats = []
-                for (const stat in this.currentMatch.basic.charts.heal) {
-                    if (this.currentMatch.basic.charts.heal.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.heal[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getLHealStats() {
-                var stats = []
-                for (const stat in this.you.lowStats.heal) {
-                    if (this.you.lowStats.heal.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.heal[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getAvgHealStats() {
-                var stats = []
-                for (const stat in this.you.avgStats.heal) {
-                    if (this.you.avgStats.heal.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.heal[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
-                    }
-                }
-                return stats
-            },
-            getMagStats() {
-                var stats = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const el = this.you.topStats[stat];
-                        stats.push(el.num)
-                    }
-                }
 
-                return stats
-            },
-            getCMagStats() {
-                var stats = []
-                for (const stat in this.currentMatch.basic.charts.magic) {
-                    if (this.currentMatch.basic.charts.magic.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.magic[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getLMagStats() {
-                var stats = []
-                for (const stat in this.you.lowStats.magic) {
-                    if (this.you.lowStats.magic.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.magic[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getAvgMagStats() {
-                var stats = []
-                for (const stat in this.you.avgStats.magic) {
-                    if (this.you.avgStats.magic.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.magic[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
-                    }
-                }
-                return stats
-            },
-            getPhysStats() {
-                var stats = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const el = this.you.topStats[stat];
-                        stats.push(el.num)
-                    }
-                }
-
-                return stats
-            },
-            getCPhysStats() {
-                var stats = []
-                for (const stat in this.currentMatch.basic.charts.physical) {
-                    if (this.currentMatch.basic.charts.physical.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.physical[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getLPhysStats() {
-                var stats = []
-                for (const stat in this.you.lowStats.physical) {
-                    if (this.you.lowStats.physical.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.physical[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getAvgPhysStats() {
-                var stats = []
-                for (const stat in this.you.avgStats.physical) {
-                    if (this.you.avgStats.physical.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.physical[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
-                    }
-                }
-                return stats
-            },
-            getTrueStats() {
-                var stats = []
-                for (const stat in this.you.topStats) {
-                    if (this.you.topStats.hasOwnProperty(stat)) {
-                        const el = this.you.topStats[stat];
-                        stats.push(el.num)
-                    }
-                }
-
-                return stats
-            },
-            getCTrueStats() {
-                var stats = []
-                for (const stat in this.currentMatch.basic.charts.true) {
-                    if (this.currentMatch.basic.charts.true.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.true[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getLTrueStats() {
-                var stats = []
-                for (const stat in this.you.lowStats.true) {
-                    if (this.you.lowStats.true.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.true[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getAvgTrueStats() {
-                var stats = []
-                for (const stat in this.you.avgStats.true) {
-                    if (this.you.avgStats.true.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.true[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
-                    }
-                }
-                return stats
-            },
-            getVarStats() {
-                var stats = []
-                for (const stat in this.you.topStats.various) {
-                    if (this.you.topStats.various.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.various[stat];
-                        stats.push(el.num)
-                    }
-                }
-
-                return stats
-            },
-            getCVarStats() {
-                var stats = []
-                for (const stat in this.currentMatch.basic.charts.various) {
-                    if (this.currentMatch.basic.charts.various.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.various[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getLVarStats() {
-                var stats = []
-                for (const stat in this.you.lowStats.various) {
-                    if (this.you.lowStats.various.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.various[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getAvgVarStats() {
-                var stats = []
-                for (const stat in this.you.avgStats.various) {
-                    if (this.you.avgStats.various.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.various[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
-                    }
-                }
-                return stats
-            },
-            getVisionStats() {
-                var stats = []
-                for (const stat in this.you.topStats.vision) {
-                    if (this.you.topStats.vision.hasOwnProperty(stat)) {
-                        const el = this.you.topStats.vision[stat];
-                        stats.push(el.num)
-                    }
-                }
-
-                return stats
-            },
-            getCVisionStats() {
-                var stats = []
-                for (const stat in this.currentMatch.basic.charts.vision) {
-                    if (this.currentMatch.basic.charts.vision.hasOwnProperty(stat)) {
-                        const el = this.currentMatch.basic.charts.vision[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getLVisionStats() {
-                var stats = []
-                for (const stat in this.you.lowStats.vision) {
-                    if (this.you.lowStats.vision.hasOwnProperty(stat)) {
-                        const el = this.you.lowStats.vision[stat];
-                        stats.push(el.num)
-                    }
-                }
-                return stats
-            },
-            getAvgVisionStats() {
-                var stats = []
-                for (const stat in this.you.avgStats.vision) {
-                    if (this.you.avgStats.vision.hasOwnProperty(stat)) {
-                        const el = this.you.avgStats.vision[stat];
-                        stats.push(el.num / Object.keys(this.you.matches).length)
-                    }
-                }
-                return stats
-            },
             keepTrying() {
-                // if (this.you.topStats && Object.keys(this.you.matches).length == 20) {
-                //     this.fillData()
+                // if (this.allChampions[1] != null) {
                 // } else {
+                //     this.$store.dispatch('getAllChampionsStatic')
                 //     setTimeout(this.keepTrying, 3000)
                 // }
             }
@@ -1966,16 +701,31 @@
         },
         mounted() {
             this.$store.dispatch('getAllChampionsStatic')
-            if (this.you.topStats && Object.keys(this.you.matches).length == 20) {
-                // this.fillData()
-            } else {
-                // setTimeout(this.keepTrying, 3000)
-            }
+            // this.keepTrying()
         }
     }
 </script>
 
 <style>
+    a {
+        color: white;
+    }
+
+    .q-icon {
+        color: white;
+    }
+
+    .collapsible {
+        color: white;
+        /* background-color: rgba(255, 255, 255, 0.466); */
+        /* border: 1px solid white; */
+        padding: .5rem;
+    }
+
+    .chart {
+        max-width: 50vw
+    }
+
     .grow {
         transition: all .35s ease-in-out;
         margin-bottom: 2rem;
