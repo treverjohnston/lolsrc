@@ -43,6 +43,7 @@
                         </q-card-title>
                     </q-card-media>
                 </q-card>
+                
             </div>
             <div v-if="test && summoner != ''" class="col-md-12 text-center">
                 <q-btn outline @click="test = false">No Game Going On, See Summoner Stats?</q-btn>
@@ -62,6 +63,50 @@
                                 </q-transition>
                             </div>
                         </div>
+                        
+                    </div>
+                </div>
+                <div v-if="Object.keys(you.matches).length >= 15" class="row justify-center desktop-only">
+                    <q-collapsible id="chart" ref="collapse" class="white collapsible" label="View Graph Options">
+                        <div class="col-xs-5">
+                            <q-field class="white" helper="Choose your options">
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                             { label: 'Physical Damage Dealt To Champions', value: 'Physical Damage Dealt To Champions', color: 'red' },
+                             { label: 'Physical Damage Taken', value: 'Physical Damage Taken', color: 'red' },
+                             { label: 'Physical Damage Dealt', value: 'Physical Damage Dealt', color: 'red' },
+                            ]" />
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                            
+                             { label: 'Magic Damage Dealt', value: 'Magic Damage Dealt', color: 'purple' },
+                             { label: 'Magic Damage Dealt To Champions', value: 'Magic Damage Dealt To Champions', color: 'purple' },
+                             { label: 'Magic Damage Taken', value: 'Magic Damage Taken', color: 'purple' }
+                            ]" />
+                            </q-field>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-field class="white" helper="Choose your options">
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[ 
+                             { label: 'True Damage Taken', value: 'True Damage Taken', color: 'orange' },
+                             { label: 'True Damage Dealt To Champions', value: 'True Damage Dealt To Champions', color: 'orange' },
+                             { label: 'True Damage Dealt', value: 'True Damage Dealt', color: 'orange' }
+                             
+                            ]" />
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                            { label: 'Total Damage Taken', value: 'Total Damage Taken' },
+                        { label: 'Total Damage Dealt To Objectives', value: 'Total Damage Dealt To Objectives' },
+                         { label: 'Damage Dealt To Turrets', value: 'Damage Dealt To Turrets' },
+                         { label: 'Damage Self Mitigated', value: 'Damage Self Mitigated' },
+                        
+                        ]" />
+                            </q-field>
+                        </div>
+                    </q-collapsible>
+                    <div class="col-xs-10 desktop-only">
+                        <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModal.open()">See Graphs</q-btn>
+                    </div>
+                    <div class="col-xs-10 mobile-only">
+                        <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModalMobile.open()">See Graphs</q-btn>
+        
                     </div>
                 </div>
                 <div v-if="you && you.topStats" class="row justify-center mobile-only">
@@ -284,7 +329,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="Object.keys(you.matches).length >= 15" class="row justify-center">
+        <div v-if="Object.keys(you.matches).length >= 15" class="row justify-center mobile-only">
             <q-collapsible id="chart" ref="collapse" class="white collapsible" label="View Graph Options">
                 <div class="col-xs-5">
                     <q-field class="white" helper="Choose your options">
@@ -300,11 +345,9 @@
                      { label: 'Magic Damage Taken', value: 'Magic Damage Taken', color: 'purple' }
                     ]" />
                     </q-field>
-
                 </div>
                 <div class="col-xs-5">
                     <q-field class="white" helper="Choose your options">
-
                         <q-option-group class="white" type="toggle" v-model="whichStat" :options="[ 
                      { label: 'True Damage Taken', value: 'True Damage Taken', color: 'orange' },
                      { label: 'True Damage Dealt To Champions', value: 'True Damage Dealt To Champions', color: 'orange' },
@@ -319,13 +362,10 @@
                 
                 ]" />
                     </q-field>
-
                 </div>
             </q-collapsible>
-
             <div class="col-xs-10 desktop-only">
                 <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModal.open()">See Graphs</q-btn>
-
             </div>
             <div class="col-xs-10 mobile-only">
                 <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModalMobile.open()">See Graphs</q-btn>
@@ -341,7 +381,7 @@
                     <q-btn push no-caps outline @click="$refs.chartModal.close()">Done</q-btn>
                 </div>
                 <div class="col-xs-5">
-                        <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open(), swal()">Change Graph</q-btn>
+                        <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open()">Change Graph</q-btn>
                 </div>
             </div>
         </q-modal>
