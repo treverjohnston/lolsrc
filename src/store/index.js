@@ -33,7 +33,8 @@ var store = new vuex.Store({
         you: { matches: 0 },
         currentGame: {},
         look: 0,
-        visible: false
+        visible: false,
+        graphs: false
     },
     mutations: {
         handleError(state, err) {
@@ -683,9 +684,11 @@ var store = new vuex.Store({
                     }
                 }
             }
-
             state.currentGame = data
             Vue.set(state.you.matches, data.gameId, data)
+            // if(state.graphs == false){
+            //     state.graphs = true
+            // }
         },
         setGeneralMatches(state, data) {
             Vue.set(state.summoner, data[0].playerId.matches, data)

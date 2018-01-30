@@ -124,99 +124,99 @@
                             </q-field>
                         </div>
                     </q-collapsible>
-                    <div class="col-xs-10 desktop-only">
+                    <!-- <div class="col-xs-10 desktop-only">
                         <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModal.open()">See Graphs</q-btn>
+                    </div> -->
+                </div>
+            </div>
+
+
+            <!-- Mobile -->
+
+            <div class="mobile-only col-xs-6 col-sm-6">
+                <div class="row justify-center">
+                    <div v-if="playing && sum.teamId == 100" v-for="sum in summoners" class="col-xs-12 col-md-2">
+                        <q-transition appear enter="fadeIn">
+                            <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="blue shadow-24 pic">
+                                <q-btn class="full-width" no-caps>
+                                    <q-card-media overlay-position="full">
+                                        <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
+                                    </q-card-media>
+                                </q-btn>
+                                <q-card-title>
+                                    <span class="ellipsis">
+                                        {{sum.name}}
+                                    </span>
+                                    <span slot="subtitle">Summoner Level: {{sum.summonerLevel}}</span>
+                                </q-card-title>
+                            </q-card>
+                        </q-transition>
                     </div>
                 </div>
             </div>
-
-
-        <!-- Mobile -->
-
-        <div class="mobile-only col-xs-6 col-sm-6">
-            <div class="row justify-center">
-                <div v-if="playing && sum.teamId == 100" v-for="sum in summoners" class="col-xs-12 col-md-2">
-                    <q-transition appear enter="fadeIn">
-                        <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="blue shadow-24 pic">
-                            <q-btn class="full-width" no-caps>
-                                <q-card-media overlay-position="full">
-                                    <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
-                                </q-card-media>
-                            </q-btn>
-                            <q-card-title>
-                                <span class="ellipsis">
-                                    {{sum.name}}
-                                </span>
-                                <span slot="subtitle">Summoner Level: {{sum.summonerLevel}}</span>
-                            </q-card-title>
-                        </q-card>
-                    </q-transition>
+            <div class="mobile-only col-xs-6 col-sm-6">
+                <div class="row reverse-wrap justify-center">
+                    <div v-if="playing && sum.teamId == 200" v-for="sum in summoners" class="col-xs-12 col-md-2">
+                        <q-transition appear enter="fadeIn">
+                            <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="red shadow-24 pic">
+                                <q-btn no-caps>
+                                    <q-card-media overlay-position="full">
+                                        <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
+                                    </q-card-media>
+                                </q-btn>
+                                <q-card-title>
+                                    <span class="ellipsis">
+                                        {{sum.name}}
+                                    </span>
+                                    <span slot="subtitle">Summoner Level: {{sum.summonerLevel}}</span>
+                                </q-card-title>
+                            </q-card>
+                        </q-transition>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mobile-only col-xs-6 col-sm-6">
-            <div class="row reverse-wrap justify-center">
-                <div v-if="playing && sum.teamId == 200" v-for="sum in summoners" class="col-xs-12 col-md-2">
-                    <q-transition appear enter="fadeIn">
-                        <q-card @click="moreInfo(sum), $refs.mini.open()" color="transparent to-hover" class="red shadow-24 pic">
-                            <q-btn no-caps>
-                                <q-card-media overlay-position="full">
-                                    <img class="responsive" :src="url + `${allChampions[sum.championId].image.full}`" :alt="allChampions[sum.championId].name">
-                                </q-card-media>
-                            </q-btn>
-                            <q-card-title>
-                                <span class="ellipsis">
-                                    {{sum.name}}
-                                </span>
-                                <span slot="subtitle">Summoner Level: {{sum.summonerLevel}}</span>
-                            </q-card-title>
-                        </q-card>
-                    </q-transition>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12">
-            <div v-if="you && you.matches && current.id != look && Object.keys(you.matches).length >= 15" class="row justify-center mobile-only">
-                <q-collapsible id="chart" ref="collapse" class="white collapsible" label="View Graph Options">
-                    <div class="col-xs-5">
-                        <q-field class="white" helper="Choose your options">
-                            <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+            <div class="col-xs-12">
+                <div v-if="you && you.matches && current.id != look && Object.keys(you.matches).length >= 15" class="row justify-center mobile-only">
+                    <q-collapsible id="chart" ref="collapse" class="white collapsible" label="View Graph Options">
+                        <div class="col-xs-5">
+                            <q-field class="white" helper="Choose your options">
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
                              { label: 'Physical Damage Dealt To Champions', value: 'Physical Damage Dealt To Champions', color: 'red' },
                              { label: 'Physical Damage Taken', value: 'Physical Damage Taken', color: 'red' },
                              { label: 'Physical Damage Dealt', value: 'Physical Damage Dealt', color: 'red' },
                             ]" />
-                            <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
                             
                              { label: 'Magic Damage Dealt', value: 'Magic Damage Dealt', color: 'purple' },
                              { label: 'Magic Damage Dealt To Champions', value: 'Magic Damage Dealt To Champions', color: 'purple' },
                              { label: 'Magic Damage Taken', value: 'Magic Damage Taken', color: 'purple' }
                             ]" />
-                        </q-field>
-                    </div>
-                    <div class="col-xs-5">
-                        <q-field class="white" helper="Choose your options">
-                            <q-option-group class="white" type="toggle" v-model="whichStat" :options="[ 
+                            </q-field>
+                        </div>
+                        <div class="col-xs-5">
+                            <q-field class="white" helper="Choose your options">
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[ 
                              { label: 'True Damage Taken', value: 'True Damage Taken', color: 'orange' },
                              { label: 'True Damage Dealt To Champions', value: 'True Damage Dealt To Champions', color: 'orange' },
                              { label: 'True Damage Dealt', value: 'True Damage Dealt', color: 'orange' }
                              
                             ]" />
-                            <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
+                                <q-option-group class="white" type="toggle" v-model="whichStat" :options="[
                             { label: 'Total Damage Taken', value: 'Total Damage Taken' },
                         { label: 'Total Damage Dealt To Objectives', value: 'Total Damage Dealt To Objectives' },
                          { label: 'Damage Dealt To Turrets', value: 'Damage Dealt To Turrets' },
                          { label: 'Damage Self Mitigated', value: 'Damage Self Mitigated' },
                         
                         ]" />
-                        </q-field>
+                            </q-field>
+                        </div>
+                    </q-collapsible>
+                    <div class="col-xs-10 mobile-only">
+                        <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModalMobile.open()">See Graphs</q-btn>
                     </div>
-                </q-collapsible>
-                <div class="col-xs-10 mobile-only">
-                    <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModalMobile.open()">See Graphs</q-btn>
                 </div>
             </div>
         </div>
-    </div>
         <q-modal class="mobile-only" ref="mini" minimized @close="close">
             <div class="row justify-center">
                 <div v-if="current.championId" class="col-xs-12 text-center">
@@ -259,7 +259,7 @@
                 <div class="col-xs-5">
                     <q-btn outline no-caps class="done" @click="viewSummoner(current)">See Recent Matches</q-btn>
                 </div>
-                <div  v-if="current.id != look" class="col-xs-12">
+                <div v-if="current.id != look" class="col-xs-12">
                     <q-btn outline no-caps class="done comp" @click="compareMobile(current)">Compare</q-btn>
                 </div>
             </div>
@@ -278,31 +278,35 @@
             </div>
         </q-modal>
         <q-modal v-if="you && you.topStats" ref="chartModal" class="mod" maximized>
-                    <div class="row justify-between">
-                        <div class="col-xs-12">
-                            <chart class="chart" :chart-data="datacollection"></chart>
-                        </div>
-                        <div class="col-xs-5">
-                            <q-btn push no-caps outline @click="$refs.chartModal.close()">Done</q-btn>
-                        </div>
-                        <div class="col-xs-5">
-                            <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open()">Change Graph</q-btn>
-                        </div>
+            <div class="row justify-between">
+                <div v-if="!graphing" class="col-xs-12 text-center">
+                    <q-spinner-gears color="amber" size="40" />
                 </div>
-            </q-modal>
-            <q-modal v-if="you && you.topStats" ref="chartModalMobile" maximized>
-                    <div class="row justify-between">
-                        <div class="col-xs-12">
-                            <mobilechart :chart-data="datacollection"></mobilechart>
-                        </div>
-                        <div class="col-xs-5">
-                            <q-btn push no-caps outline @click="$refs.chartModalMobile.close()">Done</q-btn>
-                        </div>
-                        <div class="col-xs-5">
-                            <q-btn push no-caps outline @click="$refs.chartModalMobile.close(), $refs.collapse.open()">Change Graph</q-btn>
-                        </div>
+                <div v-if="graphing" class="col-xs-12">
+                    <chart class="chart" :chart-data="datacollection"></chart>
                 </div>
-            </q-modal>
+                <div class="col-xs-5">
+                    <q-btn push no-caps outline @click="$refs.chartModal.close()">Done</q-btn>
+                </div>
+                <div class="col-xs-5">
+                    <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open()">Change Graph</q-btn>
+                </div>
+            </div>
+        </q-modal>
+        <q-modal v-if="you && you.topStats" ref="chartModalMobile" maximized>
+            <div class="row justify-between">
+                <div class="col-xs-12">
+                    <q-spinner-gears v-if="graphing" color="amber" size="40" />
+                    <mobilechart :chart-data="datacollection"></mobilechart>
+                </div>
+                <div class="col-xs-5">
+                    <q-btn push no-caps outline @click="$refs.chartModalMobile.close()">Done</q-btn>
+                </div>
+                <div class="col-xs-5">
+                    <q-btn push no-caps outline @click="$refs.chartModalMobile.close(), $refs.collapse.open()">Change Graph</q-btn>
+                </div>
+            </div>
+        </q-modal>
         <q-modal v-if="current && current.championId" maximized ref="champs">
             <div v-if="allChampions[current.championId].advanced" class="row justify-center">
                 <hr class="bhr">
@@ -385,7 +389,8 @@
         QItemTile,
         QOptionGroup,
         QField,
-        QCollapsible
+        QCollapsible,
+        QSpinnerGears
 
     } from 'quasar'
     import Profile from './Profile'
@@ -422,7 +427,8 @@
             QItemTile,
             QOptionGroup,
             QField,
-            QCollapsible
+            QCollapsible,
+            QSpinnerGears
 
         },
         data() {
@@ -475,6 +481,9 @@
             },
             look() {
                 return this.$store.state.look
+            },
+            graphing() {
+                return this.$store.state.graphs
             }
         },
         methods: {
@@ -578,6 +587,10 @@
                         }
                     }
                 }
+                if (this.you.avgStats) {
+                    // this.$store.state.graphs = true
+                    // console.log(this.$store.state.graphs)
+                }
                 return stats
             },
             getYAStats() {
@@ -632,20 +645,47 @@
             compare(data) {
                 this.$store.state.you = data
                 if (!data.matches) {
+                    this.$store.state.graphs = false
+
                     this.$store.state.you.matches = {}
                     this.$store.dispatch('getMatches', data.accountId)
                 }
                 this.fillData()
                 this.$refs.chartModal.open()
+                setTimeout(() => { this.tryAgain() }, 2000)
             },
             compareMobile(data) {
                 this.$store.state.you = data
                 if (!data.matches) {
+                    this.$store.state.graphs = false
                     this.$store.state.you.matches = {}
                     this.$store.dispatch('getMatches', data.accountId)
                 }
                 this.fillData()
                 this.$refs.chartModalMobile.open()
+                setTimeout(() => { this.tryAgain() }, 2000)
+            },
+            tryAgain() {
+                if (this.you.avgStats[0] != 0) {
+                    this.fillData()
+                    this.$refs.chartModal.open()
+                    if (this.$store.state.graphs == false) {
+                        this.$store.state.graphs = true
+                    }
+                } else {
+                    setTimeout(() => { this.tryAgain() }, 2000)
+                }
+            },
+            tryAgainMobile() {
+                if (this.you.avgStats[0] != 0) {
+                    this.fillData()
+                    this.$refs.chartModalMobile.open()
+                    if (this.$store.state.graphs == false) {
+                        this.$store.state.graphs = true
+                    }
+                } else {
+                    setTimeout(() => { this.tryAgain() }, 2000)
+                }
             },
             findSummoner() {
                 this.$store.dispatch('getSummoner', this.summoner)
@@ -679,9 +719,10 @@
 </script>
 
 <style>
-    .comp{
+    .comp {
         margin-top: .5rem;
     }
+
     .link {
         margin-bottom: 1rem;
     }
