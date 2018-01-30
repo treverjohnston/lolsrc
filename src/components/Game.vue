@@ -211,9 +211,9 @@
                             </q-field>
                         </div>
                     </q-collapsible>
-                    <div class="col-xs-10 mobile-only">
+                    <!-- <div class="col-xs-10 mobile-only">
                         <q-btn outline no-caps class="white" @click="fillData(), $refs.chartModalMobile.open()">See Graphs</q-btn>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -295,8 +295,10 @@
         </q-modal>
         <q-modal v-if="you && you.topStats" ref="chartModalMobile" maximized>
             <div class="row justify-between">
-                <div class="col-xs-12">
-                    <q-spinner-gears v-if="graphing" color="amber" size="40" />
+                <div v-if="!graphing" class="col-xs-12 text-center">
+                    <q-spinner-gears color="amber" size="40" />
+                </div>
+                <div v-if="graphing" class="col-xs-12">
                     <mobilechart :chart-data="datacollection"></mobilechart>
                 </div>
                 <div class="col-xs-5">
@@ -663,7 +665,7 @@
                 }
                 this.fillData()
                 this.$refs.chartModalMobile.open()
-                setTimeout(() => { this.tryAgain() }, 2000)
+                setTimeout(() => { this.tryAgainMobile() }, 2000)
             },
             tryAgain() {
                 if (this.you.avgStats[0] != 0) {
@@ -684,7 +686,7 @@
                         this.$store.state.graphs = true
                     }
                 } else {
-                    setTimeout(() => { this.tryAgain() }, 2000)
+                    setTimeout(() => { this.tryAgainmobile() }, 2000)
                 }
             },
             findSummoner() {

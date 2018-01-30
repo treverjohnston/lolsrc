@@ -122,13 +122,6 @@
     methods: {
       loading(){
         this.$store.state.visible = true
-      //   show({
-      //   spinner: QSpinnerGears,
-      //   spinnerColor: 'amber',
-      //   spinnerSize: 140,
-      //   message: 'Searching for Summoner.. Hang on...',
-      //   messageColor: 'orange'
-      // })
       },
       findSummoner() {
         var obj = {
