@@ -110,13 +110,7 @@
                     </div>
                 </div>
                 <div v-if="you && you.topStats" class="row justify-center mobile-only">
-                    <!-- <div class="col-xs-3">
-                        <q-btn @click="$refs.topModal.open()" outline>See Top Stats?</q-btn>
-                    </div> -->
                 </div>
-                <!-- <q-btn no-caps outline @click="showTop = !showTop" class="desktop-only">
-                    <h5 class="text-center">Top Stats Last 20 Matches</h5>
-                </q-btn> -->
                 <div v-if="you && you.topStats && showTop" class="row justify-around desktop-only">
                     <div class="col-xs-12 text-center">
                         <hr class="bhr">
@@ -372,16 +366,16 @@
 
             </div>
         </div>
-        <q-modal v-if="you && you.topStats" ref="chartModal" minimized>
+        <q-modal v-if="you && you.topStats" ref="chartModal" class="mod" maximized>
             <div class="row justify-between">
-                <div class="col-xs-11">
+                <div class="col-xs-12">
                     <chart class="chart" :chart-data="datacollection"></chart>
                 </div>
                 <div class="col-xs-5">
                     <q-btn push no-caps outline @click="$refs.chartModal.close()">Done</q-btn>
                 </div>
                 <div class="col-xs-5">
-                        <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open()">Change Graph</q-btn>
+                        <q-btn push no-caps outline @click="$refs.chartModal.close(), $refs.collapse.open(), $refs.minimizedModal.close()">Change Graph</q-btn>
                 </div>
             </div>
         </q-modal>
@@ -394,7 +388,7 @@
                     <q-btn push no-caps outline @click="$refs.chartModalMobile.close()">Done</q-btn>
                 </div>
                 <div class="col-xs-5">
-                        <q-btn push no-caps outline @click="$refs.chartModalMobile.close(), $refs.collapse.open()">Change Graph</q-btn>
+                        <q-btn push no-caps outline @click="$refs.chartModalMobile.close(), $refs.collapse.open(), $refs.minimizedModal.close()">Change Graph</q-btn>
                 </div>
             </div>
         </q-modal>
@@ -467,7 +461,7 @@
                     <q-btn push no-caps outline @click="$refs.minimizedModal.close()">Done</q-btn>
                 </div>
                 <div class="col-xs-5 desktop-only">
-                    <q-btn push no-caps outline @click="fillData(), $refs.chartModal.open()">View More Stats</q-btn>
+                    <q-btn push no-caps outline @click="fillData(),$refs.chartModal.open()">View More Stats</q-btn>
                 </div>
                 <div class="col-xs-5 mobile-only">
                     <q-btn push no-caps outline @click="fillData(), $refs.chartModalMobile.open()">View More Stats</q-btn>
@@ -592,12 +586,6 @@
             }
         },
         methods: {
-            swal(){
-                return swal({
-                                title: 'Scroll To The Bottom of the Page For Graph Options',
-                                timer: 2000
-                            })
-            },
             viewSummoner(match) {
                 this.$store.state.currentGame = match
             },
@@ -621,8 +609,6 @@
                 this.$store.dispatch('getSingleMatches', id)
             },
             fillData() {
-                // switch (this.which) {
-                //     case 1:
                 this.datacollection = {
                     labels: this.getDamage(),
                     datasets: [
@@ -648,11 +634,6 @@
                         }
                     ]
                 }
-                // this.which += 1
-
-                // break;
-
-                // }
             },
             getDamage() {
                 var title = []
@@ -761,9 +742,13 @@
         /* border: 1px solid white; */
         padding: .5rem;
     }
-
+.mod{
+    /* height: 80vh; */
+}
     .chart {
-        max-width: 50vw
+        /* max-height: 50vh; */
+        /* margin-top: 15rem; */
+        padding: 0rem 14rem 2rem 14rem;
     }
 
     .grow {

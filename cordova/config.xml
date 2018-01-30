@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.tracker.lol" version="1.0.1">
+<widget id="com.tracker.lol" version="1.0.2">
     <name>LoL-Tracker</name>
     <description>
         A simple League of Legends app to see what summoners you are in game with.

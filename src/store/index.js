@@ -31,7 +31,9 @@ var store = new vuex.Store({
         playing: false,
         currentSum: {},
         you: { matches: 0 },
-        currentGame: {}
+        currentGame: {},
+        look: 0,
+        visible: false
     },
     mutations: {
         handleError(state, err) {
@@ -549,6 +551,7 @@ var store = new vuex.Store({
         },
         setCurrents(state, data) {
             state.currents = data
+            state.visible = false
         },
         clearData(state) {
             state.currents = {}
@@ -563,10 +566,14 @@ var store = new vuex.Store({
         },
         setGame(state, data) {
             state.playing = data
+            state.visible = false
         },
         setYou(state, data) {
             state.you = data
             state.currentSum = data
+            // console.log('data', data)
+            state.look = data.id
+            // console.log(state.look)
         },
         setMatches(state, data) {
             if (data.participantIdentities) {

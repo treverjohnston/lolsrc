@@ -2,15 +2,17 @@
   <q-layout class="main" ref="layout">
     <div class="input row justify-center">
       <div class="input col-xs-8 col-md-4 text-center">
-        <q-input dark placeholder="Find Summoner" color="white"  class="text-center" v-model="summoner" :after="[
+        <q-input dark placeholder="Find Summoner" color="white" class="text-center" v-model="summoner" :after="[
         {
           icon: 'arrow_forward',
           content: true,
           handler () {
-            findSummoner()
+            findSummoner(),
+            loading()
           }
         }
-      ]"/>
+      ]" />
+      <q-spinner-gears v-if="visible" color="amber" size="40"/>
       </div>
     </div>
     <router-view />
@@ -39,10 +41,17 @@
     QCardTitle,
     QCardSeparator,
     QCardActions,
-    QTransition
+    QTransition,
+    Loading,
+    QSpinnerGears
   } from 'quasar'
 
-
+//   function show (options) {
+//   Loading.show(options)
+//   setTimeout(() => {
+//     Loading.hide()
+//   }, 3000)
+// }
   export default {
     name: 'index',
     components: {
@@ -63,7 +72,9 @@
       QCardTitle,
       QCardSeparator,
       QCardActions,
-      QTransition
+      QTransition,
+      Loading,
+      QSpinnerGears
     },
     data() {
       return {
@@ -103,9 +114,22 @@
       },
       youMatches() {
         return this.$store.state.you.matches
+      },
+      visible(){
+        return this.$store.state.visible
       }
     },
     methods: {
+      loading(){
+        this.$store.state.visible = true
+      //   show({
+      //   spinner: QSpinnerGears,
+      //   spinnerColor: 'amber',
+      //   spinnerSize: 140,
+      //   message: 'Searching for Summoner.. Hang on...',
+      //   messageColor: 'orange'
+      // })
+      },
       findSummoner() {
         var obj = {
           name: this.summoner,
@@ -131,8 +155,8 @@
       matchData(id) {
         this.$store.dispatch('getSingleMatches', id)
       },
-      checkChamp(){
-        if(!this.allChampions){
+      checkChamp() {
+        if (!this.allChampions) {
           this.$store.dispatch('getAllChampionsStatic')
         }
       }
@@ -150,9 +174,10 @@
 </script>
 
 <style>
-  .white{
+  .white {
     color: white;
   }
+
   test {
     margin-top: 2rem;
   }
